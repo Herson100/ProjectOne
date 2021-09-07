@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotChangeFinishedPizza</fullName>
+    <active>true</active>
+    <description>Prevents updates to pizzas which are finished.</description>
+    <errorConditionFormula>PRIORVALUE(isFinished__c)</errorConditionFormula>
+    <errorMessage>This pizza is marked as &quot;finished&quot;. You cannot update a finished pizza. You can, however, still delete the pizza.</errorMessage>
+</ValidationRule>

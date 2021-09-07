@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pizza__c</fullName>
+    <description>The pizza that is being made.</description>
+    <externalId>false</externalId>
+    <label>Pizza</label>
+    <referenceTo>Pizza__c</referenceTo>
+    <relationshipLabel>Order Tickets</relationshipLabel>
+    <relationshipName>Order_Tickets</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

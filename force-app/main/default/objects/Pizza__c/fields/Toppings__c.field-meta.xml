@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Toppings__c</fullName>
+    <description>The toppings of the pizza - select all that apply.</description>
+    <externalId>false</externalId>
+    <label>Toppings</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pepporoni</fullName>
+                <default>false</default>
+                <label>Pepporoni</label>
+            </value>
+            <value>
+                <fullName>Bacon</fullName>
+                <default>false</default>
+                <label>Bacon</label>
+            </value>
+            <value>
+                <fullName>Sausage</fullName>
+                <default>false</default>
+                <label>Sausage</label>
+            </value>
+            <value>
+                <fullName>Pineapple</fullName>
+                <default>false</default>
+                <label>Pineapple</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

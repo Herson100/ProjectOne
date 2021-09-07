@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Good_Pizzas_No_Pineapples</fullName>
+    <columns>NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Toppings__c</field>
+        <operation>excludes</operation>
+        <value>Pineapple</value>
+    </filters>
+    <label>Good Pizzas (no pineapples)</label>
+</ListView>

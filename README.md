@@ -1,2 +1,1 @@
-# ProjectOne
-Project One Salesforce
+A project by Team Alchemy for Revature's Salesforce training

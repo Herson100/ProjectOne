@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MeatLoverSpecialValidation</fullName>
+    <active>true</active>
+    <description>Checks to ensure that meat lovers special pizzas contain at least two meat toppings and do not contain any non-meat toppings.</description>
+    <errorConditionFormula>NOT(
+OR(
+AND(
+  OR(
+    AND(INCLUDES(Toppings__c, &quot;Pepporoni&quot;),INCLUDES(Toppings__c, 
+    &quot;Sausage&quot;)),
+    AND(INCLUDES(Toppings__c, &quot;Pepporoni&quot;),INCLUDES(Toppings__c, 
+    &quot;Bacon&quot;)),
+    AND(INCLUDES(Toppings__c, &quot;Bacon&quot;), INCLUDES(Toppings__c, 
+    &quot;Sausage&quot;))),
+  NOT(INCLUDES(Toppings__c, &quot;Pineapple&quot;))
+),
+NOT(RecordType.DeveloperName == &quot;meatLoverSpecial&quot;)))</errorConditionFormula>
+    <errorMessage>Meat Lover&apos;s Special discounts are only eligible on pizzas with at least 2 meat toppings and 0 non-meat toppings.</errorMessage>
+</ValidationRule>

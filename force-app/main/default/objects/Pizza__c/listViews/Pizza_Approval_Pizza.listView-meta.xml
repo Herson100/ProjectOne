@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pizza_Approval_Pizza</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Pizza Approval</label>
+    <queue>Pizza_Approval</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

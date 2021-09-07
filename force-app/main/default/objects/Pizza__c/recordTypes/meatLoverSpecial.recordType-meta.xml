@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>meatLoverSpecial</fullName>
+    <active>true</active>
+    <description>A special pizza which is eligible for a discount but must be extra large and can only contain meat toppings.</description>
+    <label>Meat Lover&apos;s Special</label>
+    <picklistValues>
+        <picklist>Size__c</picklist>
+        <values>
+            <fullName>Extra_Large</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Toppings__c</picklist>
+        <values>
+            <fullName>Bacon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pepporoni</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sausage</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

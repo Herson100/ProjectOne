@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Order_is_Ready__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This box is checked when every pizza in the cart is finished.</description>
+    <externalId>false</externalId>
+    <label>Order is Ready</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

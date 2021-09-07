@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The permission set for the lead cook at the pizzeria</description>
+    <hasActivationRequired>true</hasActivationRequired>
+    <label>Lead Cook</label>
+    <license>SalesUserPsl</license>
+</PermissionSet>

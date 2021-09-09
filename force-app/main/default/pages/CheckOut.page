@@ -1,0 +1,9 @@
+<apex:page standardController="Shopping_Cart__c" >
+    <apex:form >
+    	<apex:pageBlock title="Hello World">
+        	<apex:pageBlockButtons >
+            	<apex:commandButton action="{!save}" value="Super Doggo Attack" />
+        	</apex:pageBlockButtons>
+    	</apex:pageBlock>
+	</apex:form>
+</apex:page>

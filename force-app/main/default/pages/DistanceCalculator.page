@@ -1,11 +1,13 @@
 <apex:page controller="DistanceCalculatorController">
     <apex:pageBlock >
         <apex:form >
-            <label>Enter a number to calculate the distance to entry 1</label>
+            <label>Enter an address to get time to delivery</label>
             <apex:pageBlockSection >
-                <apex:inputText value="{!inputHolder}"/> <br/>
-                <apex:commandButton value="reload" action="{!remover}" rerender="outputter"/> <br/>
-                <apex:outputText value="{!tempOutput}" id="outputter"></apex:outputText> <br/>
+                <apex:inputText value="{!addressInput}"/> <br/>
+                <apex:commandButton value="reload" action="{!remover}" rerender="latitude,longitude"/> <br/>
+                <apex:outputText value="{!addressInput}" id="outputter"></apex:outputText> <br/>
+                <apex:inputText value="{!destinationLatitude}" id="latitude"/>
+                <apex:inputText value="{!destinationLongitude}" id="longitude"/> <br/>
                 <apex:commandButton value="reload list" action="{!compareAll}" rerender="list"/> <br/>
             </apex:pageBlockSection>
         </apex:form>

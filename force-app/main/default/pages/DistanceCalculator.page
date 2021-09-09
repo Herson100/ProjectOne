@@ -1,0 +1,20 @@
+<apex:page controller="DistanceCalculatorController">
+    <apex:pageBlock >
+        <apex:form >
+            <apex:pageBlockSection >
+                <apex:inputText value="{!inputHolder}"/> <br/>
+                <apex:commandButton value="reload" action="{!remover}" rerender="outputter"/> <br/>
+                <apex:outputText value="{!tempOutput}" id="outputter"></apex:outputText> <br/>
+                <apex:inputText value="{!inputNum}"/> <br/>
+                <apex:commandButton value="reload" action="{!decreaser}" rerender="lister"/> <br/>
+                <apex:outputText value="{!inputNum}" id="outputter2"></apex:outputText> <br/>
+            </apex:pageBlockSection>
+        </apex:form>
+        
+        <apex:pageBlockTable value="{!cusCons}" var="current" id="lister">
+            <apex:column value="{!current.lastName}"/>
+            <!--apex:column value="{!current.firstName}"/-->
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    
+</apex:page>

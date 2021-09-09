@@ -1,19 +1,22 @@
 <apex:page controller="DistanceCalculatorController">
     <apex:pageBlock >
         <apex:form >
+            <label>Enter a number to calculate the distance to entry 1</label>
             <apex:pageBlockSection >
                 <apex:inputText value="{!inputHolder}"/> <br/>
                 <apex:commandButton value="reload" action="{!remover}" rerender="outputter"/> <br/>
                 <apex:outputText value="{!tempOutput}" id="outputter"></apex:outputText> <br/>
-                <apex:inputText value="{!inputNum}"/> <br/>
-                <apex:commandButton value="reload" action="{!decreaser}" rerender="lister"/> <br/>
-                <apex:outputText value="{!inputNum}" id="outputter2"></apex:outputText> <br/>
+                <apex:commandButton value="reload list" action="{!compareAll}" rerender="list"/> <br/>
             </apex:pageBlockSection>
         </apex:form>
         
-        <apex:pageBlockTable value="{!cusCons}" var="current" id="lister">
-            <apex:column value="{!current.lastName}"/>
-            <!--apex:column value="{!current.firstName}"/-->
+        <apex:pageBlockTable value="{!locations}" var="current" id="list">
+            <apex:column value="{!current.location.name}"/>
+            <apex:column value="{!current.location.LocationField__Longitude__s}"/>
+            <apex:column value="{!current.location.LocationField__Latitude__s}"/>
+            <apex:column value="{!current.distance}">
+                <apex:facet name="header">Time for pizza to arrive</apex:facet>
+            </apex:column>
         </apex:pageBlockTable>
     </apex:pageBlock>
     

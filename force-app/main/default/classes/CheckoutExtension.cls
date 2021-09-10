@@ -6,7 +6,6 @@ public class CheckoutExtension {
         
     }
     
-     
     public void CustomFunction() {
         System.debug('Congratulation you have bought the pizza');
     }
@@ -23,5 +22,7 @@ public class CheckoutExtension {
         
         return Page.testerPage;
     }
+    
+    
     
 }

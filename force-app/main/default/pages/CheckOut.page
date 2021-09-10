@@ -1,5 +1,5 @@
-<apex:page standardController="Shopping_Cart__c"
-           recordSetVar="myCart"
+<apex:page standardController="Pizza__c"
+           recordSetVar="myPizza"
            extensions="CheckoutExtension">
     
     <!--button that creates cart and navigate to pizza page-->
@@ -13,14 +13,19 @@
     <!--display information to customer-->
     <apex:form >
         <apex:pageBlock >
-            <apex:pageBlockTable value="{!myCart}" var="cart">
-                <apex:column value="{!cart.name}" />
-                <apex:column value="{!cart.Account__c}" />
-                <apex:column value="{!cart.Total_Cost__c}" />
-                <apex:column value="{!cart.OrderSubmitted__c}" />
+            <apex:pageBlockTable value="{!myPizza}" var="pizza">
+                <apex:column value="{!pizza.Shopping_Cart__c}" />
+                <apex:column value="{!pizza.Size__c}" />
+                <apex:column value="{!pizza.Toppings__c}" />
+                <apex:column value="{!pizza.Price__c}" />
             </apex:pageBlockTable>
         </apex:pageBlock>
     </apex:form>
+    
+    <!--Display Total-->
+    <apex:pageBlock >
+    	<apex:outputLabel >Total: </apex:outputLabel>
+    </apex:pageBlock>
     
     <!--purchase button-->
     <apex:form >

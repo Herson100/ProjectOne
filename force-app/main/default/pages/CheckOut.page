@@ -1,9 +1,36 @@
-<apex:page standardController="Shopping_Cart__c" >
+<apex:page standardController="Shopping_Cart__c"
+           recordSetVar="myCart"
+           extensions="CheckoutExtension">
+    
     <apex:form >
-    	<apex:pageBlock title="Hello World">
-        	<apex:pageBlockButtons >
-            	<apex:commandButton action="{!save}" value="Super Doggo Attack" />
-        	</apex:pageBlockButtons>
-    	</apex:pageBlock>
-	</apex:form>
+        <apex:pageBlock title="Hello World">
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!save}"
+                                    value="Super Doggo Attack" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+        
+        <apex:pageBlock >
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!CustomFunction}" value="Submit" />
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockTable value="{!myCart}" var="cart">
+                <apex:column value="{!cart.name}" />
+                <apex:column value="{!cart.Account__c}" />
+                <apex:column value="{!cart.Total_Cost__c}" />
+                <apex:column value="{!cart.Order_is_Ready__c}" />
+                
+            </apex:pageBlockTable>
+            
+        </apex:pageBlock>
+        
+        <apex:detail />
+        
+    </apex:form>
+   
 </apex:page>

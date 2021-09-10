@@ -1,0 +1,36 @@
+<apex:page standardController="Pizza__c" extensions="CreatePizzaPageExtension">
+  <h1>Pizza Creation Page (styling pending)</h1>
+  
+  <apex:form id="newPizzaForm">
+      <apex:pageBlock >
+      
+      <apex:pageBlockButtons >
+      		<apex:commandButton value="Submit Pizza" action="{!save}" rerender="error"/>
+      </apex:pageBlockButtons>
+      
+      <apex:pageBlockSection >
+          <apex:outputPanel id="panel1">
+              <apex:inputField value="{!Pizza__c.recordTypeID}"/>
+              <apex:actionSupport event="onchange"
+                                  reRender="panel2">
+              </apex:actionSupport>
+          </apex:outputPanel>
+          <apex:outputPanel id="panel2">
+          	  <apex:inputField value="{!Pizza__c.Size__c}" required="true"/>
+              <apex:inputField value="{!Pizza__c.Toppings__c}"/>
+              <apex:actionSupport event="onchange"
+                                  reRender="currentPriceDisplay">
+              </apex:actionSupport>
+              <apex:pageBlock id="currentPriceDisplay">
+                  Current price: ${!CurrPrice}
+              </apex:pageBlock>
+          </apex:outputPanel>
+          
+      </apex:pageBlockSection>
+          
+          
+      
+      </apex:pageBlock>
+      
+  </apex:form>
+</apex:page>

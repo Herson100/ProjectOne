@@ -8,10 +8,7 @@ public class CheckoutExtension {
     
      
     public void CustomFunction() {
-        Shopping_Cart__c shopCart = new Shopping_Cart__c();
-        Insert shopCart;
-        
-        System.debug(shopCart.id);
+        System.debug('Congratulation you have bought the pizza');
     }
     
     /** Vi Nguyen

@@ -5,19 +5,18 @@
     <!--button that creates cart and navigate to pizza page-->
     <apex:form >
         <apex:pageBlock >
-            <apex:commandButton action="{!cartThenPage}"
-                                value="Add a pizza"/>
+            <apex:commandButton action="{!PizzaPage}"
+                                value="Add Pizza"/>
         </apex:pageBlock>
     </apex:form>
     		
-    <!--display information to customer-->
+    <!--display information to customer-->    
     <apex:form >
         <apex:pageBlock >
-            <apex:pageBlockTable value="{!myPizza}" var="pizza">
-                <apex:column value="{!pizza.Shopping_Cart__c}" />
-                <apex:column value="{!pizza.Size__c}" />
-                <apex:column value="{!pizza.Toppings__c}" />
-                <apex:column value="{!pizza.Price__c}" />
+            <apex:pageBlockTable value="{!currentCart}" var="cc">
+                <apex:column value="{!cc.Size__c}" />
+                <apex:column value="{!cc.Toppings__c}" />
+                <apex:column value="{!cc.Price__c}" />
             </apex:pageBlockTable>
         </apex:pageBlock>
     </apex:form>
@@ -30,8 +29,8 @@
     <!--purchase button-->
     <apex:form >
     	<apex:pageBlock >
-            <apex:commandButton action="{!CustomFunction}"
-                                value="BUY!"/>
+            <apex:commandButton action="{!Buy}"
+                                value="Buy that PIZZA!"/>
         </apex:pageBlock>
     </apex:form>
    

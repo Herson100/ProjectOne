@@ -6,7 +6,7 @@
       
       <apex:pageBlockButtons >
       		<apex:commandLink value="Checkout" action="{!toCheckout}"/>
-            <apex:commandButton value="Add Pizza" action="{!save}" rerender="newPizzaForm"/>
+            <apex:commandButton value="Add Pizza" action="{!SavePizza}" rerender="newPizzaForm"/>
       </apex:pageBlockButtons>
       
       <apex:pageBlockSection >

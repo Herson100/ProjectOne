@@ -10,9 +10,14 @@ public class CreatePizzaPageExtension {
         TriggerHelper.updatePrice(pizzas);
         return '' + pizzas[0].price__c;
     }
+    
     public PageReference toCheckout(){
-        //TODO: Change to checkout page when merging
-        return Page.Pizza_Creation_Page;
+        return Page.Checkout;
+    }
+
+    //Saves pizza to database
+    public void SavePizza(){
+        insert pizza;
     }
     
 }

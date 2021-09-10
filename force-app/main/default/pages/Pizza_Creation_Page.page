@@ -24,6 +24,7 @@
               </apex:actionSupport>
               <apex:pageBlock id="currentPriceDisplay">
                   Current price: ${!CurrPrice}
+                  <apex:image url="${!PizzaIMG}" id = "pizzaimage"></apex:image>
               </apex:pageBlock>
           </apex:outputPanel>
           

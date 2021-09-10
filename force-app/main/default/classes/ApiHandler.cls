@@ -1,4 +1,4 @@
-public class ApiHandler {
+public class ApiHandler {//set strings to private
     public static final String distanceCalculatorUrl = 'https://api.tomtom.com/routing/1/calculateRoute/';
     public static final String geocoderUrl = 'https://api.tomtom.com/search/2/geocode/';
     public static final String keyXml = 'xml?key=9sJWV9i2gsog74RN6XwGdFMLosz8iAwN';

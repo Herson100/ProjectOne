@@ -6,14 +6,34 @@ public class LocationWrapper implements Comparable{
     public Integer hours {get; set;}
     public String deliveryTime {get; set;}
     
-    public LocationWrapper(Location__c input) {
-        location = input;
+    public LocationWrapper(Location__c inputLocation) {
+        location = inputLocation;
         name = location.name;
-        seconds = 5400;
-        //refresh();
     }
     
-    public Integer compareTo(object forCompare) {
+    
+    
+    public void getDistance(String destinationLatitude, String destinationLongitude) {       
+        HTTP h = new HTTP();
+        HTTpResponse result = h.send(ApiHandler.requestDistance(String.valueOf(location.locationField__latitude__s), String.valueOf(location.locationField__longitude__s), destinationLatitude, destinationLongitude));  
+        seconds = ApiHandler.parseDistanceCalculator(result.getBodyDocument());
+        refreshDeliveryTime();
+    }
+    
+    public void refreshDeliveryTime() {
+        minutes = seconds/60;
+        hours = minutes/60;
+        minutes = math.mod(minutes, 60);
+        deliveryTime = '';
+        if (hours > 0) {deliveryTime += String.valueOf(hours) + ' hour';
+                        deliveryTime += (hours != 1 ? 's, ' : ', ');}
+        deliveryTime += String.valueOf(minutes) + ' minute';
+        if (minutes != 1) {deliveryTime += 's';}
+    }
+    
+    
+    
+    public Integer compareTo(object forCompare) {//for Comparable interface
         LocationWrapper comp = (LocationWrapper) forCompare;
         
         Integer output = 0;
@@ -32,16 +52,5 @@ public class LocationWrapper implements Comparable{
         }
         
         return output;
-    }
-    
-    public void refresh() {
-        minutes = seconds/60;
-        hours = minutes/60;
-        minutes = math.mod(minutes, 60);
-        deliveryTime = '';
-        if (hours > 0) {deliveryTime += String.valueOf(hours) + ' hour';
-                        deliveryTime += (hours > 1 ? 's, ' : ', ');}
-        deliveryTime += String.valueOf(minutes) + ' minute';
-        if (minutes != 1) {deliveryTime += 's';}
     }
 }

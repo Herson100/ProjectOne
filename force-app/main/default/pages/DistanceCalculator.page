@@ -3,18 +3,17 @@
         <apex:form >
             <label>Enter an address to get time to delivery</label>
             <apex:pageBlockSection columns="2">
-                <label>Address: </label>
-                <apex:inputText value="{!addressInput}"/> 
-                <label>City: </label>
-                <apex:inputText value="{!city}"/>
-                <label>State: </label>
-                <apex:inputText value="{!state}"/>
-                <label>Zip: (optional)</label>
-                <apex:inputText value="{!zip}"/>
-                <apex:commandButton value="check" action="{!geocode}" rerender="latitude,longitude,xml,list"/> <br/>
-                <!--apex:inputText value="{!destinationLatitude}" id="latitude"/-->
-                <!--apex:inputText value="{!destinationLongitude}" id="longitude"/-->
-                <!--apex:commandButton value="reload list" action="{!compareAll}" rerender="list"/--> <br/>
+                <label>Address: </label><apex:inputText value="{!streetAddress}"/> 
+                <label>City: </label><apex:inputText value="{!city}"/>
+                <label>State: </label> <apex:inputText value="{!state}"/>
+                <label>Zip: (optional)</label><apex:inputText value="{!zip}"/>
+                <apex:commandButton value="check" action="{!geocoder}" rerender="latitude,longitude,xml,list">
+                    <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="xml"/>
+                </apex:commandButton>
+                <apex:outputText value="{!progress}" id="xml"/>
+                <!--apex:inputText value="{!destinationLatitude}" id="latitude"/>
+                <apex:inputText value="{!destinationLongitude}" id="longitude">
+                <apex:commandButton value="reload list" action="{!compareAll}" rerender="list"/--> <br/>
             </apex:pageBlockSection>
         </apex:form>
         
@@ -22,13 +21,11 @@
             <apex:column value="{!current.name}">
             	<apex:facet name="header">Location</apex:facet>
             </apex:column>/>
-            <!--apex:column value="{!current.location.LocationField__Latitude__s}"/-->
-            <!--apex:column value="{!current.location.LocationField__Longitude__s}"/-->
             <apex:column value="{!current.deliveryTime}">
                 <apex:facet name="header">Delivery Time</apex:facet>
             </apex:column>
         </apex:pageBlockTable>
-        <!--apex:outputText value="{!outputHolder}" id="xml"/-->
+        <!--apex:outputText value="{!xmlText}" id="xml"/-->
     </apex:pageBlock>
     
 </apex:page>

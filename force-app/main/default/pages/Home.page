@@ -1,0 +1,13 @@
+<apex:page standardController="Pizza__c"
+           recordSetVar="myPizza"
+           extensions="CheckoutExtension">
+    
+    <!--button that creates cart and navigate to pizza page-->
+    <apex:form >
+        <apex:pageBlock >
+            <apex:commandButton action="{!CheckoutPage}"
+                                value="lets go!"/>
+        </apex:pageBlock>
+    </apex:form>
+    
+</apex:page>

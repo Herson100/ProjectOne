@@ -2,36 +2,53 @@
            recordSetVar="myPizza"
            extensions="CheckoutExtension">
     
+    
     <!--button that creates cart and navigate to pizza page-->
     <apex:form >
         <apex:pageBlock >
-            <apex:commandButton action="{!PizzaPage}"
+            <apex:commandButton action="{!addPizzaDummy}"
                                 value="Add Pizza"/>
+            <apex:commandButton action="{!CartCreation}"
+                                value="Add cart"/>
         </apex:pageBlock>
     </apex:form>
-    		
+    
+    
     <!--display information to customer-->    
     <apex:form >
         <apex:pageBlock >
             <apex:pageBlockTable value="{!currentCart}" var="cc">
+                <apex:column value="{!cc.ownerID}" />
                 <apex:column value="{!cc.Size__c}" />
                 <apex:column value="{!cc.Toppings__c}" />
+                <apex:column value="{!cc.Shopping_Cart__c}" />
                 <apex:column value="{!cc.Price__c}" />
             </apex:pageBlockTable>
         </apex:pageBlock>
     </apex:form>
     
+    
     <!--Display Total-->
-    <apex:pageBlock >
-    	<apex:outputLabel >Total: </apex:outputLabel>
-    </apex:pageBlock>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:outputLabel >Total: </apex:outputLabel>
+            <apex:commandButton action="{!getTotalPrice}"
+                                value="total"/>
+        </apex:pageBlock>
+    </apex:form>
+    
+    
     
     <!--purchase button-->
     <apex:form >
     	<apex:pageBlock >
             <apex:commandButton action="{!Buy}"
                                 value="Buy that PIZZA!"/>
+            <apex:commandButton action="{!PopulateCart}"
+                                value="View Cart"/>
+            
         </apex:pageBlock>
     </apex:form>
    
+    
 </apex:page>

@@ -13,11 +13,15 @@ public class LocationWrapper implements Comparable{
     
     
     
-    public void getDistance(String destinationLatitude, String destinationLongitude) {       
+    public boolean getDistance(String destinationLatitude, String destinationLongitude) {       
         HTTP h = new HTTP();
-        HTTpResponse result = h.send(ApiHandler.requestDistance(String.valueOf(location.locationField__latitude__s), String.valueOf(location.locationField__longitude__s), destinationLatitude, destinationLongitude));  
-        seconds = ApiHandler.parseDistanceCalculator(result.getBodyDocument());
+        try {
+            HTTpResponse result = h.send(ApiHandler.requestDistance(String.valueOf(location.locationField__latitude__s), String.valueOf(location.locationField__longitude__s), destinationLatitude, destinationLongitude));  
+            seconds = ApiHandler.parseDistanceCalculator(result.getBodyDocument());
+        } catch (System.Exception e) {return false;}
+        
         refreshDeliveryTime();
+        return true;
     }
     
     public void refreshDeliveryTime() {

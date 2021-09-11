@@ -28,22 +28,40 @@ public without sharing class DistanceCalculatorController {//without sharing bec
     @future
     public static void geocoder() {
         HTTP h = new HTTp();
-        passCoordiantes(h.send(ApiHandler.requestCoordinates(addressUrlFormat())));
+        HTTpResponse coordinatesResponse = new HTTpResponse();
+        try {
+            coordinatesResponse = h.send(ApiHandler.requestCoordinates(addressUrlFormat()));
+        } catch (System.exception e) {
+            progress = 'Failed (Initial callout failed)';//should never really get here, wouldn't throw an exception
+            return;
+        }
+        if (passCoordiantes(coordinatesResponse)) {progress =  'Complete';}
     }
     
-    public static void passCoordiantes(HTTpResponse response) {
-        String destinationLatitude = ApiHandler.parseGeocoder(response.getBodyDocument(), true);
-        String destinationLongitude = ApiHandler.parseGeocoder(response.getBodyDocument(), false);
+    public static boolean passCoordiantes(HTTpResponse response) {
+        String destinationLatitude;
+        String destinationLongitude;
+        try {
+            destinationLatitude = ApiHandler.parseGeocoder(response.getBodyDocument(), true);
+            destinationLongitude = ApiHandler.parseGeocoder(response.getBodyDocument(), false);
+        } catch (System.Exception e) {
+            progress = 'Failed (Geocoder)';
+            getLocationsList();
+            return false;
+        }
         getLocationsList();
-        getAllDistances(destinationLatitude, destinationLongitude);
+        return getAllDistances(destinationLatitude, destinationLongitude);
     }
-
-    public static void getAllDistances(String destinationLatitude, String destinationLongitude) {
+    
+    public static boolean getAllDistances(String destinationLatitude, String destinationLongitude) {
         for (LocationWrapper currentLocation : locations) {
-            currentLocation.getDistance(destinationLatitude, destinationLongitude);
+            if (!currentLocation.getDistance(destinationLatitude, destinationLongitude)) {
+                progress = 'Failed (Distance Calculator)';
+                return false;
+            }
         }
         locations.sort();
-        progress = 'Complete';
+        return true;
     }
     
     

@@ -57,11 +57,15 @@ public without sharing class DistanceCalculatorController {//without sharing bec
     }
     
     public static boolean getAllDistances(String destinationLatitude, String destinationLongitude) {
-        for (LocationWrapper currentLocation : locations) {
-            if (!currentLocation.getDistance(destinationLatitude, destinationLongitude)) {
-                progress = 'Failed (Distance Calculator)';
-                return false;
+        try {
+            for (LocationWrapper currentLocation : locations) {
+                if (!currentLocation.getDistance(destinationLatitude, destinationLongitude)) {
+                    progress = 'Failed (Distance Calculator)';
+                    return false;
+                }
             }
+        } catch (System.LimitException e) {//not sure this actually works
+            progress = 'Failed (Too many Distance Calculator Callouts';
         }
         locations.sort();
         return true;
@@ -83,7 +87,7 @@ public without sharing class DistanceCalculatorController {//without sharing bec
     
     public static void getLocationsList() {
         List<Location__c> tempLocations = [SELECT Name, LocationField__longitude__s, LocationField__latitude__s
-                                           FROM Location__c LIMIT 20];
+                                           FROM Location__c LIMIT 99];
         locations = new List<LocationWrapper>();
         for (Location__c currentLocation : tempLocations) {
             locations.add(new LocationWrapper(currentLocation));

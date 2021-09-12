@@ -1,8 +1,9 @@
 <apex:page controller="DistanceCalculatorController">
-    <!--style>
-        #column1{float:left;width:40%;}
-        #column2{float:left;width:60%;}
-    </style-->
+    <style>
+        #column1 {float:left; width:40%;}
+        #column2 {float:left; width:60%; cursor: pointer;}
+    </style>
+
     <apex:form >
     <div id="column1">
         
@@ -26,7 +27,7 @@
     <div id="column2">
         <apex:pageBlock >
             <apex:pageBlockTable value="{!locations}" var="current" id="list">
-                <apex:column value="{!current.name}" onclick="clickLocation('{!current.deliveryTime}')">
+                <apex:column value="{!current.name}" onclick="clickLocation('{!current.deliveryTime}')" id="mouseOver">
                     <apex:facet name="header">Location</apex:facet>
                 </apex:column>/>
                 <apex:column value="{!current.deliveryTime}">

@@ -1,0 +1,4 @@
+<apex:page Controller="OrderCompleteController">
+    <apex:outputText value="Order Complete!" /> <br />
+    <apex:outputText value="{!readyTime}" />
+</apex:page>

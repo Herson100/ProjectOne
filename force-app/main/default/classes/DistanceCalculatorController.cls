@@ -2,6 +2,7 @@ public without sharing class DistanceCalculatorController {//without sharing bec
     
     public static List<LocationWrapper> locations {get; set;}
     public static String progress {get; set;}
+    public static String selectedLocationTime {get; set;}
     
     public static String streetAddress {get; set;}
     public static String city {get; set;}
@@ -67,6 +68,17 @@ public without sharing class DistanceCalculatorController {//without sharing bec
     }
     
     
+    
+    public PageReference moveAlong() {
+        
+        progress = 'Next page with ' + selectedLocationTime;
+        
+        PageReference pageRef = new PageReference('/OrderComplete');//placeholder
+        pageRef.setRedirect(true);
+        pageRef.getParameters().put('readyTime', selectedLocationTime);
+        //return pageRef;
+        return null;
+    }
     
     
     public static void getLocationsList() {

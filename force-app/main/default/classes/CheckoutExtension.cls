@@ -1,77 +1,84 @@
 public class CheckoutExtension {
-    public Integer property {get; set;}
     public ID theCart {get;set;} //main cart to track
     public List<Pizza__c> currentCart {get; set;} //whats in the cart
-    public List<User> currentUser{get;set;} //main user to track
     
-    public ID testerCart = 'a015f000002IZtPAAW';
-    public ID user = System.UserInfo.GetUserId();
+    //main user to track
+    public List<User> currentUser{get;set;} 
+    public ID user = System.UserInfo.GetUserId();    
+    
+    //this List is used 3 times
+    public List<shopping_cart__c> unsubmitted = 
+        [SELECT name, OrderSubmitted__c
+            FROM shopping_cart__c
+            WHERE ordersubmitted__c = false AND OwnerID = :user];
+    
     
     public CheckoutExtension(ApexPages.StandardSetController controller) {
         //CartCreation();
         UserChecker();
         PopulateCart();
-        getTotalPrice();
+        //getTotalPrice();
     }
     
     //check for user to be null then set currentUser to the current user
     public void UserChecker(){
         if(user != null){
             currentUser = [SELECT id FROM User WHERE id = : user LIMIT 1];
+            if (theCart == null){
+                theCart = unsubmitted[0].id;
+            }
         }
     }
-    
 
     //Show info on cart
     public void PopulateCart(){
     	currentCart = 
             [Select name, ownerID, Size__c, Toppings__c, Price__c, shopping_cart__c
              FROM Pizza__c 
-             WHERE Shopping_Cart__c = : theCart AND ownerID = :user];
+             WHERE Shopping_Cart__c = :theCart AND ownerID = :user];
         //switch testerCart to theCart
         
-    }
-    
-    public void PopulateCart2(){
-        currentCart = 
-            [Select name, ownerID, Size__c, Toppings__c, Price__c, shopping_cart__c
-             FROM Pizza__c 
-             WHERE OwnerID = :user];
     }
     
     //Submit purchase and set OrderSubmitted to true
     public void Buy() {
         System.debug('Congratulation you have bought the pizza');
+        unsubmitted[0].ordersubmitted__c = true;
+        
+        Update unsubmitted;
+        CartCreation();
     }
     
     //Create a cart
     public void CartCreation(){
+        deleteCart();
+       
         Shopping_Cart__c shopCart = new Shopping_Cart__c();
         Insert shopCart;
         System.debug(shopCart.id);
         theCart = (shopCart.id);
     }
     
-    //calculating prices
+    //grabbing prices
     public Decimal getTotalPrice(){
-        Decimal total = 0;
-        for(Pizza__c pizza : currentCart){
-            total += pizza.price__c;
-        }
-        System.debug(total);
-        return total;
         
+            List<Shopping_Cart__C> cartPrice = 
+                [SELECT total_cost__c 
+                 FROM Shopping_Cart__c
+                WHERE ID = :theCart];
+        
+        System.debug(theCart);
+        System.debug(cartPrice[0].total_cost__c);
+        return cartPrice[0].total_cost__c;
+    }
+    
+    // delete unsubmitted cart
+	public void deleteCart(){
+        Delete unsubmitted;
     }
     
     
-    /**
-     * When user create new cart it will 
-     * delete unsubmitted cart that they may have
-     **/
-	public void deleteUnsubmittedCart(){
-        // logic to delete cart
-        // Delete cartToDelete;
-    }
+    // vvv *Dummy testing below* vvv
     
     //adding pizza dummy
     public void addPizzaDummy(){
@@ -91,6 +98,4 @@ public class CheckoutExtension {
         CartCreation();
         return Page.CheckOut;
     }
-    
-    
 }

@@ -19,6 +19,7 @@ public with sharing class TestDistanceCalculatorController {
         testContact.mailingState = 'CA';
         testContact.mailingPostalCode = '91601';
         Insert testContact;
+
     }
 
     /*
@@ -214,7 +215,7 @@ public with sharing class TestDistanceCalculatorController {
     }
 
     @isTest
-    static void testGetAddressByContactIdSP() {
+    static void testGetAddressByContactIdSP() {//deprecated method
         Test.startTest();
 
         DistanceCalculatorController testController = new DistanceCalculatorController();
@@ -240,7 +241,7 @@ public with sharing class TestDistanceCalculatorController {
     }
 
     @isTest
-    static void testGetAddressByContactIdSN() {
+    static void testGetAddressByContactIdSN() {//deprecatd method
         Test.startTest();
 
         DistanceCalculatorController testController = new DistanceCalculatorController();
@@ -267,7 +268,7 @@ public with sharing class TestDistanceCalculatorController {
 
     
     @isTest
-    static void testGetAddressByContactIdNinvalidInput() {
+    static void testGetAddressByContactIdNinvalidInput() {//deprecated method
         Test.startTest();
 
         DistanceCalculatorController testController = new DistanceCalculatorController();
@@ -291,4 +292,6 @@ public with sharing class TestDistanceCalculatorController {
 
         Test.stopTest();
     }
+
+
 }

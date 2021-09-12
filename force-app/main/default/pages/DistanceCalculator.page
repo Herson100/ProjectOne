@@ -1,73 +1,79 @@
-<apex:page controller="DistanceCalculatorController" html-style="background-color: white;" showHeader="false">
+<apex:page controller="DistanceCalculatorController" html-style="background-color: var(--bgColor);" showHeader="false">
     <style>
         :root {--bgColor: white;}
         body {border-style:solid; border-width:40px; border-color:var(--bgColor); background-color:var(--bgColor);}
-        apex:form {border-style:solid; border-width:40px; border-color:var(--bgColor); background-color:var(--bgColor);}
-        p {font-weight:bold; font-size:30px; text-align:center;}
-        #column-1 {float:left; width:0%; text-align:right;}
-        #column0 { width:55%; text-align:right; border-style:solid; border-width:20px; border-color:var(--bgColor); background-color:var(--bgColor);}
-        #column1 {float:left; width:30%; text-align:right;}
-        #column2 { width:90%; cursor: pointer; border-style:solid; border-width:20px; border-color:var(--bgColor); background-color:var(--bgColor);}
-    	apex:inputText {float:right;}
-        apex:outputText {float:right; font-weight:bold;}
+        apex:form {background-color:var(--bgColor);}
+        
+        p {font-weight:bold; font-size:30px; text-align:center; font-family: Merriweather;}
+        #inputColumn1 {float:left; width:46%; text-align:right;line-height:18px;}
+        #inputColumn2 {float:right; width:52%; text-align:left; background-color:var(--bgColor);line-height:16px;}
+        
+        #locationsTable { width:100%; cursor: pointer;background-color:var(--bgColor); font-family: Merriweather;}
+        apex:inputText {float:right; font-family: Merriweather;}
+        apex:outputText {float:right; font-weight:bold; font-family: Merriweather;}
+        apex:commandButton {float:right;font-size:15px;}
+        label {float:right;font-size:15px;font-family: Merriweather;}
+        
+        .btn 
+        {font-family: Merriweather !important; 
+        padding: 6px 12px !important; 
+        color: black !important; 
+        background-repeat: no repeat !important; 
+        overflow: hidden !important; 
+        background-image: none !important; 
+        background-color: transparent !important;
+        border: solid black 1px !important;
+        
+        font-size:15px;
+        }
+        
+        .btn:hover{background-color: lightgray !important;}
     </style>
     <body>
-    
-    <apex:form >
-        <p>
-            Store Locations
-        </p>
-        <div id="column-1">
-             
-        </div>
-        <div id="column0">
-            <apex:outputText style="float:right;border-width:20px;">Address:            :</apex:outputText><apex:inputText label="Address: " value="{!streetAddress}"/><br /> <br />
-            <apex:inputText label="City: " value="{!city}"/> <br /> <br />
-            <apex:inputText label="State: " value="{!state}"/> <br /> <br />
-            <apex:inputText label="Zip: (optional) " value="{!zip}"/> <br /> <br />
-            <apex:commandButton value="Find stores near you" action="{!geocoder}" rerender="latitude,longitude,progressBar,list" style="float:right">
-                <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="progressBar"/>
-            </apex:commandButton> <br /> <br />
-            <apex:outputText value="{!progress}" id="progressBar"/>
-        </div>
-        <!--div id="column1">
-            
-            <apex:pageBlock >
-                <apex:pageBlockSection columns="1">
-                    <apex:inputText label="Address: " value="{!streetAddress}"/> 
-                    <apex:inputText label="City: " value="{!city}"/>
-                    <apex:inputText label="State: " value="{!state}"/>
-                    <apex:inputText label="Zip: (optional) " value="{!zip}"/>
-                    <div style="text-align: right;">
-                        <apex:commandButton value="Find stores near you" action="{!geocoder}" rerender="latitude,longitude,progressBar,list" style="float:right">
-                            <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="progressBar"/>
-                        </apex:commandButton>
-                        <apex:outputText value="{!progress}" id="progressBar" style="float:right"/>
-                    </div>
-                    
-                </apex:pageBlockSection>
-            </apex:pageBlock>
-            
-        </div-->
-        <div id="column2">
-            <apex:pageBlock >
-                <apex:pageBlockTable value="{!locations}" var="current" id="list" >
-                    <apex:column value="{!current.name}" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
-                        <apex:facet name="header">Location</apex:facet>
-                    </apex:column>/>
-                    <apex:column value="{!current.deliveryTime}" style="font-weight:bold;">
-                        <apex:facet name="header">Delivery Time</apex:facet>
-                    </apex:column>
-                </apex:pageBlockTable>
-            </apex:pageBlock>
-        </div>
         
-        <apex:actionFunction name="clickLocation" action="{!moveAlong}" rerender="progressBar">
-            <apex:param name="clickedTime" value="" assignTo="{!selectedLocationTime}"/>
-            <apex:param name="clickedLocation" value="" assignTo="{!selectedLocation}"/>
-        </apex:actionFunction>
-    </apex:form>  
+        <apex:form >
+            <p>
+                Store Locations
+            </p>
+            
+            <div id="inputColumn1">
+                <label>Address: </label><br /> <br />
+                <label>City: </label><br /> <br /> 
+                <label>State: </label><br /> <br /> 
+                <label>Zip (optional): </label><br /> <br />
+                <apex:outputText value="{!progress}" id="progressBar" style="float:right;font-size:15px;font-weight:bold;line-height:25px;font-family: Merriweather;"/>
+            </div>
+            
+            <div id="inputColumn2">
+                <apex:inputText value="{!streetAddress}" style="font-family: Merriweather;"/><br /> <br />
+                <apex:inputText value="{!city}" style="font-family: Merriweather;"/> <br /> <br />
+                <apex:inputText value="{!state}" style="font-family: Merriweather;"/> <br /> <br />
+                <apex:inputText value="{!zip}" style="font-family: Merriweather;"/> <br /> <br />
+                <apex:commandButton value="Find stores near you" action="{!geocoder}" rerender="latitude,longitude,progressBar,list">
+                    <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="progressBar" immediate="true"/>
+                </apex:commandButton> <br /> <br />
                 
+            </div>
+            
+            <div id="locationsTable">
+                <apex:pageBlock >
+                    <apex:pageBlockTable value="{!locations}" var="current" id="list" >
+                        <apex:column value="{!current.name}" style="font-size:13px; font-family: Merriweather;width:50%;" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
+                            <apex:facet name="header"><font size="2.5">Location                              :</font></apex:facet>
+                        </apex:column>
+                        <apex:column value="{!current.deliveryTime}" style="font-weight:bold;font-size:13px;font-family: Merriweather;width:50%;" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
+                            <apex:facet name="header"><font size="2.5">Delivery Time</font></apex:facet>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlock>
+            </div>
+            
+            <apex:actionFunction name="clickLocation" action="{!moveAlong}" rerender="progressBar">
+                <apex:param name="clickedTime" value="" assignTo="{!selectedLocationTime}"/>
+                <apex:param name="clickedLocation" value="" assignTo="{!selectedLocation}"/>
+            </apex:actionFunction>
+            
+        </apex:form>  
     </body>
     
 </apex:page>

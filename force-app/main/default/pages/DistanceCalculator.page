@@ -1,46 +1,73 @@
-<apex:page controller="DistanceCalculatorController">
+<apex:page controller="DistanceCalculatorController" html-style="background-color: white;" showHeader="false">
     <style>
-        #column1 {float:left; width:40%;}
-        #column2 {float:left; width:60%; cursor: pointer;}
+        :root {--bgColor: white;}
+        body {border-style:solid; border-width:40px; border-color:var(--bgColor); background-color:var(--bgColor);}
+        apex:form {border-style:solid; border-width:40px; border-color:var(--bgColor); background-color:var(--bgColor);}
+        p {font-weight:bold; font-size:30px; text-align:center;}
+        #column-1 {float:left; width:0%; text-align:right;}
+        #column0 { width:55%; text-align:right; border-style:solid; border-width:20px; border-color:var(--bgColor); background-color:var(--bgColor);}
+        #column1 {float:left; width:30%; text-align:right;}
+        #column2 { width:90%; cursor: pointer; border-style:solid; border-width:20px; border-color:var(--bgColor); background-color:var(--bgColor);}
+    	apex:inputText {float:right;}
+        apex:outputText {float:right; font-weight:bold;}
     </style>
-
+    <body>
+    
     <apex:form >
-    <div id="column1">
-        
+        <p>
+            Store Locations
+        </p>
+        <div id="column-1">
+             
+        </div>
+        <div id="column0">
+            <apex:outputText style="float:right;border-width:20px;">Address:            :</apex:outputText><apex:inputText label="Address: " value="{!streetAddress}"/><br /> <br />
+            <apex:inputText label="City: " value="{!city}"/> <br /> <br />
+            <apex:inputText label="State: " value="{!state}"/> <br /> <br />
+            <apex:inputText label="Zip: (optional) " value="{!zip}"/> <br /> <br />
+            <apex:commandButton value="Find stores near you" action="{!geocoder}" rerender="latitude,longitude,progressBar,list" style="float:right">
+                <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="progressBar"/>
+            </apex:commandButton> <br /> <br />
+            <apex:outputText value="{!progress}" id="progressBar"/>
+        </div>
+        <!--div id="column1">
+            
             <apex:pageBlock >
                 <apex:pageBlockSection columns="1">
                     <apex:inputText label="Address: " value="{!streetAddress}"/> 
                     <apex:inputText label="City: " value="{!city}"/>
                     <apex:inputText label="State: " value="{!state}"/>
                     <apex:inputText label="Zip: (optional) " value="{!zip}"/>
-                    <apex:commandButton value="Find stores near you" action="{!geocoder}" rerender="latitude,longitude,progressBar,list">
-                        <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="progressBar"/>
-                    </apex:commandButton>
-                    <apex:outputText value="{!progress}" id="progressBar"/>
-                    <!--apex:inputText value="{!destinationLatitude}" id="latitude"/>
-					<apex:inputText value="{!destinationLongitude}" id="longitude">
-					<apex:commandButton value="reload list" action="{!compareAll}" rerender="list"/-->
+                    <div style="text-align: right;">
+                        <apex:commandButton value="Find stores near you" action="{!geocoder}" rerender="latitude,longitude,progressBar,list" style="float:right">
+                            <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="progressBar"/>
+                        </apex:commandButton>
+                        <apex:outputText value="{!progress}" id="progressBar" style="float:right"/>
+                    </div>
+                    
                 </apex:pageBlockSection>
             </apex:pageBlock>
-        
-    </div>
-    <div id="column2">
-        <apex:pageBlock >
-            <apex:pageBlockTable value="{!locations}" var="current" id="list">
-                <apex:column value="{!current.name}" onclick="clickLocation('{!current.deliveryTime}')" id="mouseOver">
-                    <apex:facet name="header">Location</apex:facet>
-                </apex:column>/>
-                <apex:column value="{!current.deliveryTime}">
-                    <apex:facet name="header">Delivery Time</apex:facet>
-                </apex:column>
-            </apex:pageBlockTable>
-            <!--apex:outputText value="{!xmlText}" id="xml"/-->  
-        </apex:pageBlock>
-    </div>
             
-    <apex:actionFunction name="clickLocation" action="{!moveAlong}" rerender="progressBar">
-        <apex:param name="clickedTime" value="" assignTo="{!selectedLocationTime}"/>
-    </apex:actionFunction>
-    </apex:form>
+        </div-->
+        <div id="column2">
+            <apex:pageBlock >
+                <apex:pageBlockTable value="{!locations}" var="current" id="list" >
+                    <apex:column value="{!current.name}" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
+                        <apex:facet name="header">Location</apex:facet>
+                    </apex:column>/>
+                    <apex:column value="{!current.deliveryTime}" style="font-weight:bold;">
+                        <apex:facet name="header">Delivery Time</apex:facet>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </div>
+        
+        <apex:actionFunction name="clickLocation" action="{!moveAlong}" rerender="progressBar">
+            <apex:param name="clickedTime" value="" assignTo="{!selectedLocationTime}"/>
+            <apex:param name="clickedLocation" value="" assignTo="{!selectedLocation}"/>
+        </apex:actionFunction>
+    </apex:form>  
+                
+    </body>
     
 </apex:page>

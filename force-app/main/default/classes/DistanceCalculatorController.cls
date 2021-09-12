@@ -3,6 +3,7 @@ public without sharing class DistanceCalculatorController {//without sharing bec
     public static List<LocationWrapper> locations {get; set;}
     public static String progress {get; set;}
     public static String selectedLocationTime {get; set;}
+    public static Id selectedLocation {get; set;}
     
     public static String streetAddress {get; set;}
     public static String city {get; set;}
@@ -18,6 +19,7 @@ public without sharing class DistanceCalculatorController {//without sharing bec
         state = 'CA';
         zip = 92840;
         //getAddressFromContactId('0035f000003PK4UAAW');
+        getAddressFromUser();
     }
     
     
@@ -64,7 +66,7 @@ public without sharing class DistanceCalculatorController {//without sharing bec
                     return false;
                 }
             }
-        } catch (System.LimitException e) {//not sure this actually works
+        } catch (System.LimitException e) {
             progress = 'Failed (Too many Distance Calculator Callouts';
         }
         locations.sort();
@@ -73,9 +75,13 @@ public without sharing class DistanceCalculatorController {//without sharing bec
     
     
     
+    
     public PageReference moveAlong() {
         
         progress = 'Next page with ' + selectedLocationTime;
+        //Shopping_Cart__c currentCart = [SELECT id FROM Shopping_Cart__c];//where user id etc
+        //currentCart.location__c = selectedLocation;
+        //Update currentCart;
         
         PageReference pageRef = new PageReference('/OrderComplete');//placeholder
         pageRef.setRedirect(true);
@@ -127,6 +133,27 @@ public without sharing class DistanceCalculatorController {//without sharing bec
         state = contact.mailingAddress.getState();
         try {
             zip = Integer.valueOf(contact.mailingAddress.getPostalCode());
+        } catch (System.Exception e) {
+            zip = null;
+        }
+    }
+    
+    public void getAddressFromUser() {
+        
+        User user = new User();
+        Id id =  System.UserInfo.getUserId();
+        try{
+            user = [SELECT address FROM User WHERE id = :id LIMIT 1];
+            System.debug('User found');
+        } catch (System.exception e) {System.debug(e); return;}
+        if (user.address == null) {System.debug('No address'); return;}
+        if (user.address.getCity() == null) {System.debug('No city'); return;}
+        
+        streetAddress = user.address.getStreet();
+        city = user.address.getCity();
+        state = user.address.getState();
+        try {
+            zip = Integer.valueOf(user.address.getPostalCode());
         } catch (System.Exception e) {
             zip = null;
         }

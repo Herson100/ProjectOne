@@ -7,7 +7,9 @@
     <apex:form >
         <apex:pageBlock >
             <apex:commandButton action="{!addPizzaDummy}"
-                                value="Add Pizza"/>
+                                value="Add Pizza"
+                                reRender=""/>
+            
             <apex:commandButton action="{!CartCreation}"
                                 value="Add cart"/>
         </apex:pageBlock>
@@ -31,9 +33,8 @@
     <!--Display Total-->
     <apex:form >
         <apex:pageBlock >
-            <apex:outputLabel >Total: </apex:outputLabel>
-            <apex:commandButton action="{!getTotalPrice}"
-                                value="total"/>
+            <apex:outputLabel >Total:  </apex:outputLabel>
+            <apex:outputText value="{!totalprice}"/>
         </apex:pageBlock>
     </apex:form>
     
@@ -43,7 +44,8 @@
     <apex:form >
     	<apex:pageBlock >
             <apex:commandButton action="{!Buy}"
-                                value="Buy that PIZZA!"/>
+                                value="Buy them PIZZAS!"/>
+            
             <apex:commandButton action="{!PopulateCart}"
                                 value="View Cart"/>
             

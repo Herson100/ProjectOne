@@ -6,6 +6,7 @@
     <columns>Toppings__c</columns>
     <columns>Shopping_Cart__c</columns>
     <columns>Price__c</columns>
+    <columns>OWNER.ALIAS</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

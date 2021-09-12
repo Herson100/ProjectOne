@@ -12,7 +12,7 @@ public class CheckoutExtension {
             FROM shopping_cart__c
             WHERE ordersubmitted__c = false AND OwnerID = :user];
     
-    
+    //Constructor
     public CheckoutExtension(ApexPages.StandardSetController controller) {
         //CartCreation();
         UserChecker();
@@ -37,7 +37,6 @@ public class CheckoutExtension {
              FROM Pizza__c 
              WHERE Shopping_Cart__c = :theCart AND ownerID = :user];
         //switch testerCart to theCart
-        
     }
     
     //Submit purchase and set OrderSubmitted to true

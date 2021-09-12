@@ -1,31 +1,41 @@
 <apex:page controller="DistanceCalculatorController">
-    <apex:pageBlock >
+    <!--style>
+        #column1{float:left;width:40%;}
+        #column2{float:left;width:60%;}
+    </style-->
+    
+    <div id="column1">
         <apex:form >
-            <label>Enter an address to get time to delivery</label>
-            <apex:pageBlockSection columns="2">
-                <label>Address: </label><apex:inputText value="{!streetAddress}"/> 
-                <label>City: </label><apex:inputText value="{!city}"/>
-                <label>State: </label> <apex:inputText value="{!state}"/>
-                <label>Zip: (optional)</label><apex:inputText value="{!zip}"/>
-                <apex:commandButton value="check" action="{!geocoder}" rerender="latitude,longitude,xml,list">
-                    <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="xml"/>
-                </apex:commandButton>
-                <apex:outputText value="{!progress}" id="xml"/>
-                <!--apex:inputText value="{!destinationLatitude}" id="latitude"/>
-                <apex:inputText value="{!destinationLongitude}" id="longitude">
-                <apex:commandButton value="reload list" action="{!compareAll}" rerender="list"/--> <br/>
-            </apex:pageBlockSection>
+            <apex:pageBlock >
+                <apex:pageBlockSection columns="1">
+                    <apex:inputText label="Address: " value="{!streetAddress}"/> 
+                    <apex:inputText label="City: " value="{!city}"/>
+                    <apex:inputText label="State: " value="{!state}"/>
+                    <apex:inputText label="Zip: (optional) " value="{!zip}"/>
+                    <apex:commandButton value="Find stores near you" action="{!geocoder}" rerender="latitude,longitude,xml,list">
+                        <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="xml"/>
+                    </apex:commandButton>
+                    <apex:outputText value="{!progress}" id="xml"/>
+                    <!--apex:inputText value="{!destinationLatitude}" id="latitude"/>
+					<apex:inputText value="{!destinationLongitude}" id="longitude">
+					<apex:commandButton value="reload list" action="{!compareAll}" rerender="list"/-->
+                </apex:pageBlockSection>
+            </apex:pageBlock>
         </apex:form>
-        
-        <apex:pageBlockTable value="{!locations}" var="current" id="list">
-            <apex:column value="{!current.name}">
-            	<apex:facet name="header">Location</apex:facet>
-            </apex:column>/>
-            <apex:column value="{!current.deliveryTime}">
-                <apex:facet name="header">Delivery Time</apex:facet>
-            </apex:column>
-        </apex:pageBlockTable>
-        <!--apex:outputText value="{!xmlText}" id="xml"/-->
-    </apex:pageBlock>
+    </div>
+    <div id="column2">
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!locations}" var="current" id="list">
+                <apex:column value="{!current.name}">
+                    <apex:facet name="header">Location</apex:facet>
+                </apex:column>/>
+                <apex:column value="{!current.deliveryTime}">
+                    <apex:facet name="header">Delivery Time</apex:facet>
+                </apex:column>
+            </apex:pageBlockTable>
+            <!--apex:outputText value="{!xmlText}" id="xml"/-->  
+        </apex:pageBlock>
+    </div>
+    
     
 </apex:page>

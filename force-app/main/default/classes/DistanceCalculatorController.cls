@@ -16,6 +16,7 @@ public without sharing class DistanceCalculatorController {//without sharing bec
         city = 'Garden Grove';
         state = 'CA';
         zip = 92840;
+        //getAddressFromContactId('0035f000003PK4UAAW');
     }
     
     
@@ -49,7 +50,8 @@ public without sharing class DistanceCalculatorController {//without sharing bec
             getLocationsList();
             return false;
         }
-        getLocationsList();
+        getLocationsList();//needed because static variables are transient on controllers,
+        					//and we can only call static variables from a static @future method
         return getAllDistances(destinationLatitude, destinationLongitude);
     }
     
@@ -77,7 +79,10 @@ public without sharing class DistanceCalculatorController {//without sharing bec
     }
     
     public static String addressUrlFormat() {
-        String output = streetAddress;
+        String output = '';
+        if (streetAddress != null) {
+            output = streetAddress;
+        }
         for (String current : new List<String>{city, state, String.valueOf(zip)}) {
             if (current != null) {
                 output = output + '%20' + current;
@@ -93,7 +98,14 @@ public without sharing class DistanceCalculatorController {//without sharing bec
         return output;
     }
     
-    public void getAddressFromContact(Contact contact) {
+    public void getAddressFromContactId(String id) {
+        
+        Contact contact = new Contact();
+        try{
+            contact = [SELECT mailingAddress FROM Contact WHERE id = :id LIMIT 1];
+        } catch (System.exception e) {return;}
+        if (contact.mailingAddress.getCity() == null) {return;}
+        
         streetAddress = contact.mailingAddress.getStreet();
         city = contact.mailingAddress.getCity();
         state = contact.mailingAddress.getState();

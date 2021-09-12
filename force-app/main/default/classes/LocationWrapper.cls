@@ -1,5 +1,7 @@
 public class LocationWrapper implements Comparable{
+    
     public Location__c location {get; set;}
+    
     public String name {get; set;}
     public Integer seconds {get; set;}
     public Integer minutes {get; set;}

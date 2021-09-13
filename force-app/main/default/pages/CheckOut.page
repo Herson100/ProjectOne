@@ -1,6 +1,7 @@
 <apex:page standardController="Pizza__c"
            recordSetVar="myPizza"
            extensions="CheckoutExtension">
+<<<<<<< HEAD
     <style>
         :root {--bgColor: white;}
         body {
@@ -36,10 +37,13 @@
     
     <body>
         
+=======
+>>>>>>> ffd16bba9640325ce8cf6532242e16ee1a6e20d8
     
     <!--button that creates cart and navigate to pizza page-->
     <apex:form >
         <apex:pageBlock >
+<<<<<<< HEAD
             <div style="text-align: center;
                         padding-bottom: 12px;">
                 <apex:commandButton action="{!addPizzaDummy}"
@@ -87,4 +91,36 @@
     </apex:form>
     </body>
     
+=======
+            <apex:commandButton action="{!cartThenPage}"
+                                value="Add a pizza"/>
+        </apex:pageBlock>
+    </apex:form>
+    		
+    <!--display information to customer-->
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockTable value="{!myPizza}" var="pizza">
+                <apex:column value="{!pizza.Shopping_Cart__c}" />
+                <apex:column value="{!pizza.Size__c}" />
+                <apex:column value="{!pizza.Toppings__c}" />
+                <apex:column value="{!pizza.Price__c}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <!--Display Total-->
+    <apex:pageBlock >
+    	<apex:outputLabel >Total: </apex:outputLabel>
+    </apex:pageBlock>
+    
+    <!--purchase button-->
+    <apex:form >
+    	<apex:pageBlock >
+            <apex:commandButton action="{!CustomFunction}"
+                                value="BUY!"/>
+        </apex:pageBlock>
+    </apex:form>
+   
+>>>>>>> ffd16bba9640325ce8cf6532242e16ee1a6e20d8
 </apex:page>

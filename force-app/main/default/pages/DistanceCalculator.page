@@ -1,0 +1,79 @@
+<apex:page controller="DistanceCalculatorController" html-style="background-color: var(--bgColor);" showHeader="false">
+    <style>
+        :root {--bgColor: white;}
+        body {border-style:solid; border-width:40px; border-color:var(--bgColor); background-color:var(--bgColor);}
+        apex:form {background-color:var(--bgColor);}
+        
+        p {font-weight:bold; font-size:30px; text-align:center; font-family: Merriweather;}
+        #inputColumn1 {float:left; width:46%; text-align:right;line-height:18px;}
+        #inputColumn2 {float:right; width:52%; text-align:left; background-color:var(--bgColor);line-height:16px;}
+        
+        #locationsTable { width:100%; cursor: pointer;background-color:var(--bgColor); font-family: Merriweather;}
+        apex:inputText {float:right; font-family: Merriweather;}
+        apex:outputText {float:right; font-weight:bold; font-family: Merriweather;}
+        apex:commandButton {float:right;font-size:15px;}
+        label {float:right;font-size:15px;font-family: Merriweather;}
+        
+        .btn 
+        {font-family: Merriweather !important; 
+        padding: 6px 12px !important; 
+        color: black !important; 
+        background-repeat: no repeat !important; 
+        overflow: hidden !important; 
+        background-image: none !important; 
+        background-color: transparent !important;
+        border: solid black 1px !important;
+        
+        font-size:15px;
+        }
+        
+        .btn:hover{background-color: lightgray !important;}
+    </style>
+    <body>
+        
+        <apex:form >
+            <p>
+                Store Locations
+            </p>
+            
+            <div id="inputColumn1">
+                <label>Address: </label><br /> <br />
+                <label>City: </label><br /> <br /> 
+                <label>State: </label><br /> <br /> 
+                <label>Zip (optional): </label><br /> <br />
+                <apex:outputText value="{!progress}" id="progressBar" style="float:right;font-size:15px;font-weight:bold;line-height:25px;font-family: Merriweather;"/>
+            </div>
+            
+            <div id="inputColumn2">
+                <apex:inputText value="{!streetAddress}" style="font-family: Merriweather;"/><br /> <br />
+                <apex:inputText value="{!city}" style="font-family: Merriweather;"/> <br /> <br />
+                <apex:inputText value="{!state}" style="font-family: Merriweather;"/> <br /> <br />
+                <apex:inputText value="{!zip}" style="font-family: Merriweather;"/> <br /> <br />
+                <apex:commandButton value="Find stores near you" action="{!geocoder}" rerender="latitude,longitude,progressBar,list">
+                    <apex:actionSupport event="onclick" action="{!showProgressText}" rerender="progressBar" immediate="true"/>
+                </apex:commandButton> <br /> <br />
+                
+            </div>
+            
+            <div id="locationsTable">
+                <apex:pageBlock >
+                    <apex:pageBlockTable value="{!locations}" var="current" id="list" >
+                        <apex:column value="{!current.name}" style="font-size:13px; font-family: Merriweather;width:50%;" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
+                            <apex:facet name="header"><font size="2.5">Location                              :</font></apex:facet>
+                        </apex:column>
+                        <apex:column value="{!current.deliveryTime}" style="font-weight:bold;font-size:13px;font-family: Merriweather;width:50%;" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
+                            <apex:facet name="header"><font size="2.5">Delivery Time</font></apex:facet>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlock>
+            </div>
+            
+            <apex:actionFunction name="clickLocation" action="{!moveAlong}" rerender="progressBar">
+                <apex:param name="clickedTime" value="" assignTo="{!selectedLocationTime}"/>
+                <apex:param name="clickedLocation" value="" assignTo="{!selectedLocation}"/>
+            </apex:actionFunction>
+            
+        </apex:form>  
+    </body>
+    
+</apex:page>

@@ -1,0 +1,23 @@
+<apex:page >
+    <!--make the pizza-->
+    <apex:pageBlock >
+        <h1>
+            Make your pizza here
+            <br/>
+            You want pizza, we got pizza!
+            <br/>
+            You want toppings, we got toppings!
+        </h1>
+
+    </apex:pageBlock>
+    
+    <!--go back to checkouk-->
+    <apex:form >
+        <apex:pageBlock >
+            <apex:commandButton action="/apex/CheckOut"
+                                    value="Now go PAY!!!"/>
+        </apex:pageBlock>
+    </apex:form>
+    
+    
+</apex:page>

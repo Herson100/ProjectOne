@@ -1,0 +1,9 @@
+<apex:page controller="CustomerController" html-style="background-color: white;" showHeader="false" standardStylesheets="true">
+    <div style = "margin: auto;
+  width: 90%;
+  padding: 10px;">
+       <h1 style = "font-family: Merriweather; font-size: 18px; margin: auto; width: 50%">
+        You haven't ordered from us before! What are you waiting for?
+    </h1>
+    </div>
+</apex:page>

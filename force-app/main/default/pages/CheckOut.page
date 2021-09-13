@@ -7,50 +7,44 @@
     <apex:form >
         <apex:pageBlock >
             <apex:commandButton action="{!addPizzaDummy}"
-                                value="Add Pizza"
-                                reRender=""/>
+                                reRender="table"
+                                value="Add Pizza"/>
             
             <apex:commandButton action="{!CartCreation}"
-                                value="Add cart"/>
+                                reRender="table"
+                                value="Start Over"/>
         </apex:pageBlock>
-    </apex:form>
-    
-    
-    <!--display information to customer-->    
-    <apex:form >
-        <apex:pageBlock >
-            <apex:pageBlockTable value="{!currentCart}" var="cc">
-                <apex:column value="{!cc.ownerID}" />
+        
+        
+        <!--display information to customer--> 
+        <apex:pageBlock id="table">
+            <apex:pageBlockTable value="{!currentCart}" id="pizzaTable" var="cc" >
                 <apex:column value="{!cc.Size__c}" />
                 <apex:column value="{!cc.Toppings__c}" />
-                <apex:column value="{!cc.Shopping_Cart__c}" />
                 <apex:column value="{!cc.Price__c}" />
             </apex:pageBlockTable>
         </apex:pageBlock>
-    </apex:form>
-    
-    
-    <!--Display Total-->
-    <apex:form >
+        
+        
+        <!--Display Total-->
         <apex:pageBlock >
             <apex:outputLabel >Total:  </apex:outputLabel>
-            <apex:outputText value="{!totalprice}"/>
+            <apex:outputText value="{!totalprice}"
+                             id="total"/>
         </apex:pageBlock>
-    </apex:form>
-    
-    
-    
-    <!--purchase button-->
-    <apex:form >
-    	<apex:pageBlock >
+        
+        
+        
+        <!--purchase button-->
+        <apex:pageBlock >
             <apex:commandButton action="{!Buy}"
-                                value="Buy them PIZZAS!"/>
+                                value="Buy"/>
             
             <apex:commandButton action="{!PopulateCart}"
                                 value="View Cart"/>
             
         </apex:pageBlock>
     </apex:form>
-   
+    
     
 </apex:page>

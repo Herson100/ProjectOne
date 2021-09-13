@@ -39,13 +39,23 @@ public class CheckoutExtension {
         //switch testerCart to theCart
     }
     
+    public void emptyCart(){
+        
+    }
+    
     //Submit purchase and set OrderSubmitted to true
     public void Buy() {
         System.debug('Congratulation you have bought the pizza');
-        unsubmitted[0].ordersubmitted__c = true;
+         List<shopping_cart__c> toBeSubmitted = 
+            [SELECT name, OrderSubmitted__c
+             FROM shopping_cart__c
+             WHERE ordersubmitted__c = false AND OwnerID = :user];
         
-        Update unsubmitted;
-        CartCreation();
+        for(Integer i = 0; i < toBeSubmitted.size(); i++){
+            toBeSubmitted[i].orderSubmitted__c = true;
+        }
+        
+        Update toBeSubmitted;
     }
     
     //Create a cart
@@ -87,6 +97,7 @@ public class CheckoutExtension {
         Insert pizzaDummy;
     }
     
+/*
     //go to pizza page
     public PageReference PizzaPage(){
         return Page.testerPage;
@@ -97,4 +108,6 @@ public class CheckoutExtension {
         CartCreation();
         return Page.CheckOut;
     }
+*/
+    
 }

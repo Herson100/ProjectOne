@@ -56,7 +56,7 @@ public with sharing class TriggerHelper {
             //Discounts based on record type (special offers)
             
             String recordType = toAdjust.RecordTypeID;
-            if (recordType == '0125e000000uuaAAAQ'){
+            if (recordType == Schema.SObjectType.Pizza__C.GetRecordTypeInfosByDeveloperName().get('meatLoverSpecial').getRecordTypeID()){
                 toAdjust.price__c *= .80;
             }
             

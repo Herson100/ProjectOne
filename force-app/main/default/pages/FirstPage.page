@@ -1,0 +1,18 @@
+<apex:page standardController="Career__c" recordSetVar="jobList" extensions="SubmitApplication">
+    <title>VisualForce Page Title</title>
+
+    <apex:form >
+        <apex:pageBlock title="Hiring Open" >
+            <apex:pageBlockTable width="50%" value="{!jobList}" var="job">
+                <apex:column width="5%" value="{!job.Job_Title__c}" />
+                <apex:column width="30%" value="{!job.Job_Description__c}" />
+                <apex:column width="50%" value="{!job.Job_Requirement__c}" />
+            </apex:pageBlockTable>
+            <apex:pageblockButtons >
+                <apex:commandButton value="Apply now" action="{!applyJob}"/>
+            </apex:pageblockButtons>   
+        </apex:pageBlock>
+        <apex:detail />
+    </apex:form>  
+    
+</apex:page>

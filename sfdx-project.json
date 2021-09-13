@@ -5,8 +5,12 @@
       "default": true
     }
   ],
-  "name": "Project 0 Revature",
+  "name": "JoeBear Pizzaria",
   "namespace": "",
+<<<<<<< HEAD
   "sfdcLoginUrl": "https://cunning-narwhal-7qpkce-dev-ed.my.salesforce.com/",
+=======
+  "sfdcLoginUrl": "https://curious-bear-leqj9p-dev-ed.my.salesforce.com/",
+>>>>>>> 0070dc5b1ad2b0fa7e0c6fb8da6981843e211c71
   "sourceApiVersion": "52.0"
 }

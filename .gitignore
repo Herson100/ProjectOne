@@ -36,4 +36,10 @@ $RECYCLE.BIN/
 
 # Local environment variables
 .env
+<<<<<<< HEAD
 sfdx-project.json
+=======
+
+# ignore the url
+sfdx-project.json
+>>>>>>> 0070dc5b1ad2b0fa7e0c6fb8da6981843e211c71

@@ -97,10 +97,10 @@ public class CheckoutExtension {
         Insert pizzaDummy;
     }
     
-/*
+
     //go to pizza page
     public PageReference PizzaPage(){
-        return Page.testerPage;
+        return Page.Pizza_Creation_Page;
     }
     
     //go to checkout page
@@ -108,6 +108,6 @@ public class CheckoutExtension {
         CartCreation();
         return Page.CheckOut;
     }
-*/
+
     
 }

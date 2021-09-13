@@ -1,33 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <alerts>
-        <fullName>Approved_Holiday_Tomorrow</fullName>
-        <description>Approved Holiday Tomorrow</description>
-        <protected>false</protected>
-        <recipients>
-            <type>creator</type>
-        </recipients>
-        <senderType>CurrentUser</senderType>
-        <template>unfiled$public/SupportEscalatedCaseNotification</template>
-    </alerts>
-    <rules>
-        <fullName>NotificationHoliday</fullName>
-        <active>false</active>
-        <criteriaItems>
-            <field>Approved_Holiday__c.CreatedById</field>
-            <operation>notEqual</operation>
-            <value>null</value>
-        </criteriaItems>
-        <description>Notifies an employee that an approved holiday of theirs is tomorrow</description>
-        <triggerType>onCreateOnly</triggerType>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Approved_Holiday_Tomorrow</name>
-                <type>Alert</type>
-            </actions>
-            <offsetFromField>Approved_Holiday__c.Date__c</offsetFromField>
-            <timeLength>-1</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-    </rules>
-</Workflow>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata"/>
+

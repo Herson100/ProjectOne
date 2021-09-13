@@ -1,30 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <rules>
-        <fullName>Order is Ready Alert</fullName>
-        <actions>
-            <name>Delivery</name>
-            <type>Task</type>
-        </actions>
-        <active>true</active>
-        <criteriaItems>
-            <field>Shopping_Cart__c.Order_is_Ready__c</field>
-            <operation>equals</operation>
-            <value>True</value>
-        </criteriaItems>
-        <description>Alerts the account who owns the cart when their order is ready</description>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-    </rules>
-    <tasks>
-        <fullName>Delivery</fullName>
-        <assignedTo>idodelivery@revaturepizza.com</assignedTo>
-        <assignedToType>user</assignedToType>
-        <description>A pizza delivery is ready. Please deliver the order associated with the shopping cart.</description>
-        <dueDateOffset>0</dueDateOffset>
-        <notifyAssignee>false</notifyAssignee>
-        <priority>High</priority>
-        <protected>false</protected>
-        <status>In Progress</status>
-        <subject>Delivery</subject>
-    </tasks>
-</Workflow>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata"/>
+

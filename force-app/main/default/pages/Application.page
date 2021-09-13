@@ -1,0 +1,38 @@
+<apex:page standardController="Application__c"  extensions="SubmitApplication" >
+    <title>Application Page</title>
+	
+    <apex:sectionHeader title="Application Form" />
+    <apex:pageMessages ></apex:pageMessages>
+
+    <apex:form >
+		<apex:pageBlock title="Submit Job Application with a Resume">  
+            <apex:pageBlockSection columns="1" title="Personal Details" >
+                <apex:inputField value="{!Application__c.First_Name__c}"/>
+                <apex:inputText value="{!Application__c.Last_Name__c}"/>  
+                <apex:inputField value="{!Application__c.Phone__c}"/>
+                <apex:inputField value="{!Application__c.Email__c}"/>
+                <apex:inputField value="{!Application__c.Details__c}"/>
+
+            </apex:pageBlockSection>
+
+            
+            <apex:pageBlockSection >
+                <apex:outputLabel style="color:blue">Select your file</apex:outputLabel>
+                &nbsp; 
+                <apex:inputFile id="myFile" value="{!myDoc.Body}" fileName="{!myDoc.name}"></apex:inputFile>
+            </apex:pageBlockSection>
+        
+            <apex:pageblockButtons >
+                <apex:commandButton value="Submit" action="{!upload}"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:commandButton value="Back to Job lists" action="{!jobList}"/>
+            </apex:pageblockButtons>
+
+
+        </apex:pageBlock>             
+
+
+    </apex:form> 
+
+
+
+</apex:page>

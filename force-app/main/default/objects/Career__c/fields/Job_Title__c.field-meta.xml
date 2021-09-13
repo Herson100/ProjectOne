@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Title__c</fullName>
+    <externalId>false</externalId>
+    <label>Job Title</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Restaurant General Manager</fullName>
+                <default>false</default>
+                <label>Restaurant General Manager</label>
+            </value>
+            <value>
+                <fullName>Shift Leader</fullName>
+                <default>false</default>
+                <label>Shift Leader</label>
+            </value>
+            <value>
+                <fullName>Team Member</fullName>
+                <default>false</default>
+                <label>Team Member</label>
+            </value>
+            <value>
+                <fullName>Delivery Driver</fullName>
+                <default>false</default>
+                <label>Delivery Driver</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

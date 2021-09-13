@@ -22,7 +22,7 @@ public class CreatePizzaPageExtension {
                 return 'Cheese_Pizza.png';
             }
             when 'Pepporoni'{
-                return 'pizzaP.png';
+                return 'PizzaP.png';
             }
             when 'Bacon'{
                 return 'PizzaB.png';
@@ -55,13 +55,13 @@ public class CreatePizzaPageExtension {
                 return 'PizzaPBSP.png';
             }
             when ('Bacon;Sausage'){
-                return 'PizzaBS.png';
+                return 'PizzaSB.png';
             }
             when ('Bacon;Pineapple'){
                 return 'PizzaBP.png';
             }
             when ('Bacon;Sausage;Pineapple'){
-                return 'PizzaBSP.png';
+                return 'PizzaSBP.png';
             }
             when ('Sausage;Pineapple'){
                 return 'PizzaSP.png';

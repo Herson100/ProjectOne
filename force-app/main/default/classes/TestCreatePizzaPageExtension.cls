@@ -42,7 +42,7 @@ public class TestCreatePizzaPageExtension {
             //Testing pizza price check
             System.assertEquals(ext.getCurrPrice(), '' + 14.50);
             //Testing page references
-            //System.assertEquals(ext.toCheckout(), Page.checkout);
+            System.assertEquals(ext.toCheckout().getURL(), Page.checkout.getURL());
             //Testing getPizzaIMG
             System.assertEquals(ext.getPizzaIMG(), 'PizzaS.png');
             ext.pizza.toppings__c = 'Pepporoni;Bacon';

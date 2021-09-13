@@ -1,0 +1,14 @@
+<apex:page Controller="OrderCompleteController" html-style="background-color: white;" showHeader="false">
+    <style>
+        body {}
+        p {font-weight:bold; font-size:30px; text-align:center;font-family: Merriweather !important; }
+    </style>
+    <body>
+        <p>
+            Order Complete!
+        </p>
+        <p>
+            {!readyTime}
+        </p>
+    </body>
+</apex:page>

@@ -16,6 +16,7 @@ public class CreatePizzaPageExtension {
     }
 
     public String getPizzaIMG(){
+        System.debug(pizza.toppings__c);
         switch on pizza.toppings__c{
             when null{
                 return 'Cheese_Pizza.png';
@@ -32,37 +33,37 @@ public class CreatePizzaPageExtension {
             when 'Pineapple'{
                 return 'PizzaPineapple.png';
             }
-            when ('pepporoni;bacon'){
+            when ('Pepporoni;Bacon'){
                 return 'PizzaPB.png';
             }
-            when ('pepporoni;sausage'){
+            when ('Pepporoni;Sausage'){
                 return 'PizzaPS.png';
             }
-            when ('pepporoni;pineapple'){
+            when ('Pepporoni;Pineapple'){
                 return 'PizzaPP.png';
             }
-            when ('pepporoni;bacon;sausage'){
+            when ('Pepporoni;Bacon;Sausage'){
                 return 'PizzaPBS.png';
             }
-            when ('pepporoni;bacon;pineapple'){
+            when ('Pepporoni;Bacon;Pineapple'){
                 return 'PizzaPBP.png';
             }
-            when ('pepporoni;sausage;pineapple'){
+            when ('Pepporoni;Sausage;Pineapple'){
                 return 'PizzaPSP.png';
             }
-            when ('pepporoni;bacon;sausage;pineapple'){
+            when ('Pepporoni;Bacon;Sausage;Pineapple'){
                 return 'PizzaPBSP.png';
             }
-            when ('bacon;sausage'){
+            when ('Bacon;Sausage'){
                 return 'PizzaBS.png';
             }
-            when ('bacon;pineapple'){
+            when ('Bacon;Pineapple'){
                 return 'PizzaBP.png';
             }
-            when ('bacon;sausage;pineapple'){
+            when ('Bacon;Sausage;Pineapple'){
                 return 'PizzaBSP.png';
             }
-            when ('sausage;pineapple'){
+            when ('Sausage;Pineapple'){
                 return 'PizzaSP.png';
             }
         }

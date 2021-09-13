@@ -1,5 +1,5 @@
 public class CreatePizzaPageExtension {
-	private Pizza__c pizza;
+	public Pizza__c pizza;
     //User Stuff
     public ID user = System.UserInfo.GetUserId();
     public List<User> currentUser{get;set;}

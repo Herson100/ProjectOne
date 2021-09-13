@@ -42,8 +42,7 @@
         <apex:pageBlock >
             <div style="text-align: center;
                         padding-bottom: 12px;">
-                <apex:commandButton action="{!addPizzaDummy}"
-                                    reRender="table"
+                <apex:commandLink action="{!PizzaPage}"
                                     value="Add Pizza"/>
             
             	<apex:commandButton action="{!CartCreation}"

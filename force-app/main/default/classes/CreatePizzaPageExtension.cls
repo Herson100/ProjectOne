@@ -1,20 +1,40 @@
 public class CreatePizzaPageExtension {
 	private Pizza__c pizza;
+    //User Stuff
+    public ID user = System.UserInfo.GetUserId();
+    public List<User> currentUser{get;set;}
+    public ID theCart {get;set;}
+    public List<shopping_cart__c> unsubmitted = 
+        [SELECT name, OrderSubmitted__c
+            FROM shopping_cart__c
+            WHERE ordersubmitted__c = false AND OwnerID = :user];
+    //Constructor
     public CreatePizzaPageExtension(ApexPages.StandardController stdController){
         this.pizza = (Pizza__c)stdController.getRecord();
+        currUserSetter();
+        pizza.shopping_cart__c = theCart;
     }
-    
+    //Used to display the current price
     public String getCurrPrice(){
         List<pizza__c> pizzas = new List<pizza__c>();
         pizzas.add(pizza);
         TriggerHelper.updatePrice(pizzas);
         return '' + pizzas[0].price__c;
     }
-
+    //Returns the page reference for the checkout page
     public PageReference toCheckout(){
         return Page.Checkout;
     }
-
+    //Populates currentUser with user data
+    public void currUserSetter(){
+        if(user != null){
+            currentUser = [SELECT id FROM User WHERE id = : user LIMIT 1];
+            if (theCart == null){
+                theCart = unsubmitted[0].id;
+            }
+        }
+    }
+    //Returns which pizza img to load based on the toppings
     public String getPizzaIMG(){
         System.debug(pizza.toppings__c);
         switch on pizza.toppings__c{

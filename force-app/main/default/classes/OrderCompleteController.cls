@@ -3,7 +3,7 @@ public class OrderCompleteController {
     
     public OrderCompleteController() {
         readyTime = 'Will be ready in ';
-        //readyTime += System.currentPageReference().getParameters().get('readyTime');
-        readyTime += 'it\'s own time';
+        readyTime += System.currentPageReference().getParameters().get('readyTime');
+        //readyTime += 'it\'s own time';
     }
 }

@@ -79,16 +79,23 @@ public without sharing class DistanceCalculatorController {//without sharing bec
     public PageReference moveAlong() {
         
         progress = 'Next page with ' + selectedLocationTime;
-        //Id id =  System.UserInfo.getUserId();
+        Id id =  System.UserInfo.getUserId();
         //Shopping_Cart__c currentCart = [SELECT id FROM Shopping_Cart__c WHER id = :id];//and in progress
         //currentCart.location__c = selectedLocation;
         //Update currentCart;
         
-        PageReference pageRef = new PageReference('/OrderComplete');//placeholder
+        //delete existing
+        Shopping_Cart__c shopCart = new Shopping_Cart__c();
+        shopCart.Location__c = selectedLocation;
+        shopCart.Delivery_Time__c = selectedLocationTime;
+        Insert shopCart;
+        
+        //PageReference pageRef = Page.OrderComplete;
+        PageReference pageRef = Page.CheckOut;
         pageRef.setRedirect(true);
-        pageRef.getParameters().put('readyTime', selectedLocationTime);
-        //return pageRef;
-        return null;
+        //pageRef.getParameters().put('readyTime', selectedLocationTime);
+        return pageRef;
+        //return null;
     }
     
     

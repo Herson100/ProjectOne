@@ -1,6 +1,8 @@
 public class CheckoutExtension {
     public ID theCart {get;set;} //main cart to track
-    public List<Pizza__c> currentCart {get; set;} //whats in the cart
+    public List<Pizza__c> currentCart {get; set;} //whats in the cart  
+    String deliveryTime {get; set;}
+    Id selectedLocation {get; set;}
     
     //main user to track
     public List<User> currentUser{get;set;} 
@@ -8,7 +10,7 @@ public class CheckoutExtension {
     
     //this List is used 3 times
     public List<shopping_cart__c> unsubmitted = 
-        [SELECT name, OrderSubmitted__c
+        [SELECT name, OrderSubmitted__c, Location__c, Delivery_Time__c
             FROM shopping_cart__c
             WHERE ordersubmitted__c = false AND OwnerID = :user];
     
@@ -44,18 +46,24 @@ public class CheckoutExtension {
     }
     
     //Submit purchase and set OrderSubmitted to true
-    public void Buy() {
+    public PageReference Buy() {
         System.debug('Congratulation you have bought the pizza');
          List<shopping_cart__c> toBeSubmitted = 
-            [SELECT name, OrderSubmitted__c
+            [SELECT name, OrderSubmitted__c, Delivery_Time__c
              FROM shopping_cart__c
              WHERE ordersubmitted__c = false AND OwnerID = :user];
         
         for(Integer i = 0; i < toBeSubmitted.size(); i++){
             toBeSubmitted[i].orderSubmitted__c = true;
+            deliveryTime = toBeSubmitted[i].Delivery_Time__c;
         }
         
         Update toBeSubmitted;
+        
+        PageReference pageRef = Page.OrderComplete;
+        pageRef.setRedirect(true);
+        pageRef.getParameters().put('readyTime', deliveryTime);
+        return pageRef;
     }
     
     //Create a cart
@@ -63,6 +71,8 @@ public class CheckoutExtension {
         deleteCart();
        
         Shopping_Cart__c shopCart = new Shopping_Cart__c();
+        shopCart.Location__c = selectedLocation;
+        shopCart.Delivery_Time__c = deliveryTime;
         Insert shopCart;
         System.debug(shopCart.id);
         theCart = (shopCart.id);
@@ -83,6 +93,8 @@ public class CheckoutExtension {
     
     // delete unsubmitted cart
 	public void deleteCart(){
+        deliveryTime = unsubmitted[0].Delivery_Time__c;
+        selectedLocation = unsubmitted[0].Location__c;
         Delete unsubmitted;
     }
     
@@ -100,6 +112,7 @@ public class CheckoutExtension {
 
     //go to pizza page
     public PageReference PizzaPage(){
+        
         return Page.Pizza_Creation_Page;
     }
     

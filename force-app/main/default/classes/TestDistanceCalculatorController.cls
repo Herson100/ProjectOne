@@ -186,7 +186,7 @@ public with sharing class TestDistanceCalculatorController {
         DistanceCalculatorController testController = new DistanceCalculatorController();
 
         //System.assertEquals('10900%20Katella%20Ave%20Garden%20Grove%20CA%2092840', DistanceCalculatorController.addressUrlFormat());
-        System.assertEquals('11049%20Burbank%20Blvd%20North%20Hollywood%20CA%2091601', DistanceCalculatorController.addressUrlFormat());
+        System.assertEquals('10900%20Katella%20Ave%20Garden%20Grove%20CA%2092840', DistanceCalculatorController.addressUrlFormat());
 
         Test.stopTest();
     }
@@ -225,10 +225,10 @@ public with sharing class TestDistanceCalculatorController {
         String id = String.valueOf(c.id);
         System.assertNotEquals(null, id);
 
-        System.assertEquals('11049 Burbank Blvd', DistanceCalculatorController.streetAddress);
-        System.assertEquals('North Hollywood', DistanceCalculatorController.city);
+        System.assertEquals('10900 Katella Ave', DistanceCalculatorController.streetAddress);
+        System.assertEquals('Garden Grove', DistanceCalculatorController.city);
         System.assertEquals('CA', DistanceCalculatorController.state);
-        System.assertEquals(91601, DistanceCalculatorController.zip);
+        System.assertEquals(92840, DistanceCalculatorController.zip);
 
         testController.getAddressFromContactId(id);
 
@@ -251,17 +251,17 @@ public with sharing class TestDistanceCalculatorController {
         String id = String.valueOf(c.id);
         System.assertNotEquals(null, id);
 
-        System.assertEquals('11049 Burbank Blvd', DistanceCalculatorController.streetAddress);
-        System.assertEquals('North Hollywood', DistanceCalculatorController.city);
+        System.assertEquals('10900 Katella Ave', DistanceCalculatorController.streetAddress);
+        System.assertEquals('Garden Grove', DistanceCalculatorController.city);
         System.assertEquals('CA', DistanceCalculatorController.state);
-        System.assertEquals(91601, DistanceCalculatorController.zip);
+        System.assertEquals(92840, DistanceCalculatorController.zip);
 
         testController.getAddressFromContactId('000000000000000');
 
-        System.assertEquals('11049 Burbank Blvd', DistanceCalculatorController.streetAddress);
-        System.assertEquals('North Hollywood', DistanceCalculatorController.city);
+        System.assertEquals('10900 Katella Ave', DistanceCalculatorController.streetAddress);
+        System.assertEquals('Garden Grove', DistanceCalculatorController.city);
         System.assertEquals('CA', DistanceCalculatorController.state);
-        System.assertEquals(91601, DistanceCalculatorController.zip);
+        System.assertEquals(92840, DistanceCalculatorController.zip);
 
         Test.stopTest();
     }
@@ -278,17 +278,17 @@ public with sharing class TestDistanceCalculatorController {
         String id = String.valueOf(c.id);
         System.assertNotEquals(null, id);
 
-        System.assertEquals('11049 Burbank Blvd', DistanceCalculatorController.streetAddress);
-        System.assertEquals('North Hollywood', DistanceCalculatorController.city);
+        System.assertEquals('10900 Katella Ave', DistanceCalculatorController.streetAddress);
+        System.assertEquals('Garden Grove', DistanceCalculatorController.city);
         System.assertEquals('CA', DistanceCalculatorController.state);
-        System.assertEquals(91601, DistanceCalculatorController.zip);
+        System.assertEquals(92840, DistanceCalculatorController.zip);
 
         testController.getAddressFromContactId('');
 
-        System.assertEquals('11049 Burbank Blvd', DistanceCalculatorController.streetAddress);
-        System.assertEquals('North Hollywood', DistanceCalculatorController.city);
+        System.assertEquals('10900 Katella Ave', DistanceCalculatorController.streetAddress);
+        System.assertEquals('Garden Grove', DistanceCalculatorController.city);
         System.assertEquals('CA', DistanceCalculatorController.state);
-        System.assertEquals(91601, DistanceCalculatorController.zip);
+        System.assertEquals(92840, DistanceCalculatorController.zip);
 
         Test.stopTest();
     }

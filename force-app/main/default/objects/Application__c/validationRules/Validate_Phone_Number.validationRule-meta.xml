@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Phone_Number</fullName>
+    <active>true</active>
+    <description>validate USA phone number format</description>
+    <errorConditionFormula>!REGEX(Phone__c,&quot;^(\\+1)? ?(([0-9]{3})|(\\([0-9]{3}\\)))( |-)?[0-9]{3}-?[0-9]{4}$&quot;)</errorConditionFormula>
+    <errorMessage>Enter correct phone number format</errorMessage>
+</ValidationRule>

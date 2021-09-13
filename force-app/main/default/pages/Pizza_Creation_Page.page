@@ -24,7 +24,7 @@
               </apex:actionSupport>
               <apex:pageBlock id="currentPriceDisplay">
                   Current price: ${!CurrPrice}
-                  <apex:dynamicComponent componentValue="${!PizzaIMG}" id = "pizzaimage"></apex:Image>
+                  <apex:image url="{!URLFOR($Resource.pizzaIMGs, pizzaIMG)}" id="pizzaimage"></apex:Image>
               </apex:pageBlock>
           </apex:outputPanel>
           

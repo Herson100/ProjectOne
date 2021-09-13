@@ -15,58 +15,58 @@ public class CreatePizzaPageExtension {
         return Page.Checkout;
     }
 
-    public Component.Apex.Image getPizzaIMG(){
+    public String getPizzaIMG(){
         switch on pizza.toppings__c{
             when null{
-                return [SELECT Body FROM StaticResource WHERE Name = 'Cheese_Pizza'].get(0);
+                return 'Cheese_Pizza.png';
             }
             when 'Pepporoni'{
-                return [SELECT Body FROM StaticResource WHERE Name = 'pizzaP'].get(0);
+                return 'pizzaP.png';
             }
             when 'Bacon'{
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaB'].get(0);
+                return 'PizzaB.png';
             }
             when 'Sausage'{
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaS'].get(0);
+                return 'PizzaS.png';
             }
             when 'Pineapple'{
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaPineapple'].get(0);
+                return 'PizzaPineapple.png';
             }
             when ('pepporoni;bacon'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaPB'].get(0);
+                return 'PizzaPB.png';
             }
             when ('pepporoni;sausage'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaPS'].get(0);
+                return 'PizzaPS.png';
             }
             when ('pepporoni;pineapple'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaPP'].get(0);
+                return 'PizzaPP.png';
             }
             when ('pepporoni;bacon;sausage'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaPBS'].get(0);
+                return 'PizzaPBS.png';
             }
             when ('pepporoni;bacon;pineapple'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaPBP'].get(0);
+                return 'PizzaPBP.png';
             }
             when ('pepporoni;sausage;pineapple'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaPSP'].get(0);
+                return 'PizzaPSP.png';
             }
             when ('pepporoni;bacon;sausage;pineapple'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaPBSP'].get(0);
+                return 'PizzaPBSP.png';
             }
             when ('bacon;sausage'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaBS'].get(0);
+                return 'PizzaBS.png';
             }
             when ('bacon;pineapple'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaBP'].get(0);
+                return 'PizzaBP.png';
             }
             when ('bacon;sausage;pineapple'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaBSP'].get(0);
+                return 'PizzaBSP.png';
             }
             when ('sausage;pineapple'){
-                return [SELECT Body FROM StaticResource WHERE Name = 'PizzaSP'].get(0);
+                return 'PizzaSP.png';
             }
         }
-        return [SELECT Body FROM StaticResource WHERE Name = 'Cheese_Pizza'].get(0);
+        return 'Cheese_Pizza.png';
     }
 
     //Saves pizza to database

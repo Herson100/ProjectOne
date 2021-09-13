@@ -1,5 +1,4 @@
 public class CheckoutExtension {
-<<<<<<< HEAD
     public ID theCart {get;set;} //main cart to track
     public List<Pizza__c> currentCart {get; set;} //whats in the cart
     
@@ -110,32 +109,5 @@ public class CheckoutExtension {
         return Page.CheckOut;
     }
 */
-=======
-
-    public Integer property {get; set;}
-    
-    public CheckoutExtension(ApexPages.StandardSetController controller) {
-        
-    }
-    
-    public void CustomFunction() {
-        System.debug('Congratulation you have bought the pizza');
-    }
-    
-    /** Vi Nguyen
-      * create a cart 
-      * go to pizza page with cart id 
-      */
-    public PageReference cartThenPage(){
-        
-        //Shopping_Cart__c shopCart = new Shopping_Cart__c();
-        //Insert shopCart;
-        //System.debug(shopCart.id);
-        
-        return Page.Pizza_Creation_Page;
-    }
-    
-    
->>>>>>> ffd16bba9640325ce8cf6532242e16ee1a6e20d8
     
 }

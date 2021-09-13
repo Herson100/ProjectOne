@@ -1,50 +1,90 @@
 <apex:page standardController="Pizza__c"
            recordSetVar="myPizza"
            extensions="CheckoutExtension">
+    <style>
+        :root {--bgColor: white;}
+        body {
+        	border-style:solid; 
+        	border-width: 50px 130px; 
+        	border-color:var(--bgColor); 
+        	background-color:var(--bgColor);
+        }
+        
+        apex:form {
+        	background-color:var(--bgColor);
+        }
+        
+        label {
+        	padding-right: 8px;
+        	font-size:15px;
+        	font-family: Merriweather;}
+        
+        .btn {
+            font-family: Merriweather !important; 
+            padding: 6px 12px !important; 
+            overflow: hidden !important; 
+            background-image: none !important; 
+            background-color: transparent !important;
+            font-size:15px;
+        }
+        
+        .btn:hover{
+        	background-color: lightgray !important;
+        }
+        
+    </style>
     
+    <body>
+        
     
     <!--button that creates cart and navigate to pizza page-->
     <apex:form >
         <apex:pageBlock >
-            <apex:commandButton action="{!addPizzaDummy}"
-                                reRender="table"
-                                value="Add Pizza"/>
+            <div style="text-align: center;
+                        padding-bottom: 12px;">
+                <apex:commandButton action="{!addPizzaDummy}"
+                                    reRender="table"
+                                    value="Add Pizza"/>
             
-            <apex:commandButton action="{!CartCreation}"
-                                reRender="table"
-                                value="Start Over"/>
-        </apex:pageBlock>
+            	<apex:commandButton action="{!CartCreation}"
+                                    reRender="table, total"
+                                    value="Start Over"/>
+            </div>
+            
         
         
         <!--display information to customer--> 
-        <apex:pageBlock id="table">
             <apex:pageBlockTable value="{!currentCart}" id="pizzaTable" var="cc" >
                 <apex:column value="{!cc.Size__c}" />
                 <apex:column value="{!cc.Toppings__c}" />
                 <apex:column value="{!cc.Price__c}" />
             </apex:pageBlockTable>
-        </apex:pageBlock>
-        
+            <br/>
         
         <!--Display Total-->
-        <apex:pageBlock >
-            <apex:outputLabel >Total:  </apex:outputLabel>
-            <apex:outputText value="{!totalprice}"
+            <div class = "totalcost">
+                <apex:outputLabel >Total:  </apex:outputLabel>
+            	<apex:outputText value="{!totalprice}"
                              id="total"/>
+            </div>
+            
         </apex:pageBlock>
         
         
         
         <!--purchase button-->
         <apex:pageBlock >
-            <apex:commandButton action="{!Buy}"
-                                value="Buy"/>
+            <div style="text-align: center;">
+                <apex:commandButton action="{!Buy}"
+                                	value="Buy"/>
             
-            <apex:commandButton action="{!PopulateCart}"
-                                value="View Cart"/>
+            	<apex:commandButton action="{!PopulateCart}"
+                                	value="View Cart"/>
+            </div>
+            
             
         </apex:pageBlock>
     </apex:form>
-    
+    </body>
     
 </apex:page>

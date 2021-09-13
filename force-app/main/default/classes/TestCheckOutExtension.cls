@@ -3,11 +3,7 @@ public class TestCheckOutExtension {
     
     @testSetup
     static void setup(){
-        
-        //PermissionSet permSet = new PermissionSet(name = 'CustomerPerms');
-        //Insert permSet;   //Permission sets and profiles seem to exist while testing, so this is only needed if this permission set is not present.  
-        
-        //inserting user
+
         ID sysAdmin = [SELECT id FROM profile WHERE name = 'System Administrator' LIMIT 1].id;
         ID CEO = [SELECT id FROM UserRole WHERE name = 'CEO' LIMIT 1].id;
         User testUser = new User(LastName = 'Inv #', Email = 'test@test.com', Alias = 'Tcode', 

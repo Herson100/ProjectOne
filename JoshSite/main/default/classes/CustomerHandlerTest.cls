@@ -43,7 +43,7 @@ public class CustomerHandlerTest
         u.CommunityNickname = 'tfggh';
         u.LocaleSidKey = 'en_US';
         u.TimeZoneSidKey = 'GMT';
-        u.ProfileID = [SELECT id FROM Profile WHERE name = 'Customer Community User' LIMIT 1].id;
+        u.ProfileID = [SELECT id FROM Profile WHERE name = 'Customer Community Plus Login User' LIMIT 1].id;
         u.LanguageLocaleKey = 'en_US';
         u.EmailEncodingKey = 'UTF-8';
         u.IsActive = true; 
@@ -97,7 +97,7 @@ public class CustomerHandlerTest
         Contact newCon = new Contact(Lastname = 'Frederick', AccountID = newAcc.id);
         Insert newCon;
         
-        Profile comProfile = [SELECT id FROM Profile WHERE name = 'Customer Community User' LIMIT 1];
+        Profile comProfile = [SELECT id FROM Profile WHERE name = 'Customer Community Login Plus User' LIMIT 1];
         List<Contact> contactList = new List<Contact>();
         for(Integer n = 0; n < 151; n++)
         {

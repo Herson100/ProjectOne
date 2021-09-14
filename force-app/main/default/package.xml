@@ -24,13 +24,14 @@
         <members>*</members>
         <name>LightningComponentBundle</name>
     </types-->
+
+    <!--types>
+        <members>Customer Community Plus Login User</members>
+        <name>Profile</name>
+    </types-->
     <types>
         <members>*</members>
         <name>StaticResource</name>
-    </types>
-    <types>
-        <members>Customer Community Plus Login User</members>
-        <name>Profile</name>
     </types>
 
 
@@ -39,7 +40,7 @@
         <members>*</members>
         <name>CustomObject</name>
     </types>
-    <!types>
+    <types>
         <members>*</members>
         <name>RemoteSiteSetting</name>
     </types>
@@ -47,10 +48,10 @@
         <members>*</members>
         <name>Role</name>
     </types>
-    <types>
+    <!--types>
         <members>*</members>
         <name>ContentAsset</name>
-    </types>
+    </types-->
     <types>
         <members>*</members>
         <name>Queue</name>
@@ -66,12 +67,10 @@
 
 
 
-
-
-    <types>
+    <!--types>
         <members>RevaturePizzeria</members>
         <name>CustomApplication</name>
-    </types>
+    </types-->
     <types>
         <members>*</members>
         <name>CustomTab</name>
@@ -80,10 +79,10 @@
         <members>*</members>
         <name>BrandingSet</name>
     </types>
-    <types>
+    <!--types>
         <members>*</members>
         <name>Flexipage</name>
-    </types>
+    </types-->
     <!--types>
         <members></members>
         <name>Settings</name>
@@ -95,6 +94,8 @@
         <members>*</members>
         <name>Package</name>
     </types-->
+
+
 
 
     <version>52.0</version>

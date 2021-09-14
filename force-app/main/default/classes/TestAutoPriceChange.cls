@@ -7,7 +7,7 @@ public class TestAutoPriceChange {
             testPizzas.add(new Pizza__c(size__c = SizeHelper(math.mod(i,4)), toppings__c = ToppingsHelper(math.mod(i,2)), recordTypeID = specialHelper(math.mod(i, 8))));
         }
         for (Pizza__c curr : testPizzas){
-            if (curr.RecordTypeID == '0125e000000uuaAAAQ'){
+            if (curr.RecordTypeID == Schema.SObjectType.Pizza__C.GetRecordTypeInfosByDeveloperName().get('meatLoverSpecial').getRecordTypeID()){
                 curr.toppings__c = ToppingsHelper(500);
             }
         }
@@ -44,7 +44,7 @@ public class TestAutoPriceChange {
                     curr.size__c = 'Extra_Large';
                 }
                 when 'Extra_Large' {
-                    if (curr.RecordTypeID != '0125e000000uuaAAAQ') {
+                    if (curr.RecordTypeID != Schema.SObjectType.Pizza__C.GetRecordTypeInfosByDeveloperName().get('meatLoverSpecial').getRecordTypeID()) {
                         curr.size__c = 'Small';
                     }
                 }
@@ -72,7 +72,7 @@ public class TestAutoPriceChange {
                     System.assertEquals(curr.price__c, oldPrices[currIndex]+2);
                 }
                 when 'Extra_Large' {
-                    if (curr.recordTypeID != '0125e000000uuaAAAQ'){
+                    if (curr.recordTypeID != Schema.SObjectType.Pizza__C.GetRecordTypeInfosByDeveloperName().get('meatLoverSpecial').getRecordTypeID()){
                         System.debug('Large to extra large is ' + (curr.price__c - oldPrices[currIndex]));
                         System.assertEquals(curr.price__c, oldPrices[currIndex]+2);
                     }
@@ -121,8 +121,8 @@ public class TestAutoPriceChange {
     // A helper function for procedually generating pizzas during setup
     public static String SpecialHelper(Integer i){
         if (i == 7){
-            return '0125e000000uuaAAAQ';
+            return Schema.SObjectType.Pizza__C.GetRecordTypeInfosByDeveloperName().get('meatLoverSpecial').getRecordTypeID();
         }
-        return '0125e000000uua0AAA';
+        return Schema.SObjectType.Pizza__C.GetRecordTypeInfosByDeveloperName().get('meatLoverSpecial').getRecordTypeID();
     }
 }

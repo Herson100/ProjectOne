@@ -20,10 +20,10 @@
         <members>*</members>
         <name>ApexTrigger</name>
     </types>
-    <types>
+    <!--types>
         <members>*</members>
         <name>LightningComponentBundle</name>
-    </types>
+    </types-->
     <types>
         <members>*</members>
         <name>StaticResource</name>
@@ -39,7 +39,7 @@
         <members>*</members>
         <name>CustomObject</name>
     </types>
-    <types>
+    <!types>
         <members>*</members>
         <name>RemoteSiteSetting</name>
     </types>
@@ -84,17 +84,17 @@
         <members>*</members>
         <name>Flexipage</name>
     </types>
-    <types>
+    <!--types>
         <members></members>
         <name>Settings</name>
-    </types>
+    </types-->
 
 
 
-    <types>
+    <!--types>
         <members>*</members>
         <name>Package</name>
-    </types>
+    </types-->
 
 
     <version>52.0</version>

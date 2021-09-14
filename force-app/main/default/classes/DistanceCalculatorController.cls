@@ -89,13 +89,14 @@ public without sharing class DistanceCalculatorController {//without sharing bec
         shopCart.Location__c = selectedLocation;
         shopCart.Delivery_Time__c = selectedLocationTime;
         Insert shopCart;
-        
+
         //PageReference pageRef = Page.OrderComplete;
         PageReference pageRef = Page.CheckOut;
         pageRef.setRedirect(true);
         //pageRef.getParameters().put('readyTime', selectedLocationTime);
         return pageRef;
         //return null;
+
     }
     
     

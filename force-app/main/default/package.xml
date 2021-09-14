@@ -59,10 +59,10 @@
         <members>*</members>
         <name>Flow</name>
     </types>
-    <types>
+    <!--types>
         <members>*</members>
         <name>PermissionSet</name>
-    </types>
+    </types-->
 
 
 

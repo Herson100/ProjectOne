@@ -8,7 +8,7 @@
         #inputColumn1 {float:left; width:46%; text-align:right;line-height:18px;}
         #inputColumn2 {float:right; width:52%; text-align:left; background-color:var(--bgColor);line-height:16px;}
         
-        #locationsTable { width:100%; cursor: pointer;background-color:var(--bgColor); font-family: Merriweather;}
+        #locationsTable { width:100%; cursor: pointer;background-color:var(--bgColor); }
         apex:inputText {float:right; font-family: Merriweather;}
         apex:outputText {float:right; font-weight:bold; font-family: Merriweather;}
         apex:commandButton {float:right;font-size:15px;}
@@ -58,10 +58,10 @@
             <div id="locationsTable">
                 <apex:pageBlock >
                     <apex:pageBlockTable value="{!locations}" var="current" id="list" >
-                        <apex:column value="{!current.name}" style="font-size:13px; font-family: Merriweather;width:50%;" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
+                        <apex:column value="{!current.name}" style="font-size:13px;width:50%;" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
                             <apex:facet name="header"><font size="2.5">Location                              :</font></apex:facet>
                         </apex:column>
-                        <apex:column value="{!current.deliveryTime}" style="font-weight:bold;font-size:13px;font-family: Merriweather;width:50%;" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
+                        <apex:column value="{!current.deliveryTime}" style="font-weight:bold;font-size:13px;width:50%;" onclick="clickLocation('{!current.deliveryTime}','{!current.location.id}')">
                             <apex:facet name="header"><font size="2.5">Delivery Time</font></apex:facet>
                         </apex:column>
                     </apex:pageBlockTable>

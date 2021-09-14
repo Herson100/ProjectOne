@@ -1,12 +1,31 @@
-<apex:page standardController="Pizza__c" extensions="CreatePizzaPageExtension">
-  <h1>Pizza Creation Page (styling pending)</h1>
+<apex:page standardController="Pizza__c" extensions="CreatePizzaPageExtension" html-style="background-color: var(--bgColor);" showHeader="false">
+  <h1>Pizza Creation Page</h1>
+    
+    <style>
+        h1 {font-family: Merriweather; font-size:25px; width:58%; float:right; }
+        
+    	.btn 
+        {font-family: Merriweather !important; 
+        padding: 6px 12px !important; 
+        color: black !important; 
+        background-repeat: no repeat !important; 
+        overflow: hidden !important; 
+        background-image: none !important; 
+        background-color: transparent !important;
+        border: solid black 1px !important;
+        
+        font-size:15px;
+        }
+        
+        .btn:hover{background-color: lightgray !important;}
+    </style>
   
   <apex:form id="newPizzaForm">
       <apex:pageBlock >
       
       <apex:pageBlockButtons >
       		<apex:commandLink value="Checkout" action="{!toCheckout}"/>
-            <apex:commandButton value="Add Pizza" action="{!SavePizza}" rerender="newPizzaForm"/>
+            <apex:commandButton value="Add Pizza" action="{!SavePizza}" rerender="newPizzaForm" styleClass="btn"/>
       </apex:pageBlockButtons>
       
       <apex:pageBlockSection >

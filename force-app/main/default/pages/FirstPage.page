@@ -1,15 +1,31 @@
-<apex:page standardController="Career__c" recordSetVar="jobList" extensions="SubmitApplication">
+<apex:page standardController="Career__c" recordSetVar="jobList" extensions="SubmitApplication" html-style="background-color: var(--bgColor);" showHeader="false">
     <title>VisualForce Page Title</title>
 
+    <style>
+        
+    .btn 
+    {font-family: Merriweather !important; 
+     padding: 6px 12px !important; 
+     margin: 1px !important;
+     color: black !important; 
+     background-repeat: no repeat !important; 
+     overflow: hidden !important; 
+     background-image: none !important; 
+     background-color: transparent !important;
+     border: solid black 1px !important;
+     }
+    
+    .btn:hover{background-color: lightgray !important;}
+    </style>
     <apex:form >
-        <apex:pageBlock title="Hiring Open" >
+        <apex:pageBlock title="Hiring Open">
             <apex:pageBlockTable width="50%" value="{!jobList}" var="job">
                 <apex:column width="5%" value="{!job.Job_Title__c}" />
                 <apex:column width="30%" value="{!job.Job_Description__c}" />
                 <apex:column width="50%" value="{!job.Job_Requirement__c}" />
             </apex:pageBlockTable>
             <apex:pageblockButtons >
-                <apex:commandButton value="Apply now" action="{!applyJob}"/>
+                <apex:commandButton value="Apply now" action="{!applyJob}" styleClass="btn"/>
             </apex:pageblockButtons>   
         </apex:pageBlock>
         <apex:detail />

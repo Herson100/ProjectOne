@@ -1,7 +1,23 @@
-<apex:page standardController="Application__c"  extensions="SubmitApplication" >
+<apex:page standardController="Application__c"  extensions="SubmitApplication" html-style="background-color: var(--bgColor);" showHeader="false">
+    
+    <style>
+    .btn 
+    {font-family: Merriweather !important; 
+     padding: 6px 12px !important; 
+     margin: 1px !important;
+     color: black !important; 
+     background-repeat: no repeat !important; 
+     overflow: hidden !important; 
+     background-image: none !important; 
+     background-color: transparent !important;
+     border: solid black 1px !important;
+     }
+    
+    .btn:hover{background-color: lightgray !important;}
+    </style>
     <title>Application Page</title>
 	
-    <apex:sectionHeader title="Application Form" />
+    <apex:sectionHeader title="Application Form" html-style="font-family: Merriweather;"/>
     <apex:pageMessages ></apex:pageMessages>
 
     <apex:form >
@@ -23,8 +39,8 @@
             </apex:pageBlockSection>
         
             <apex:pageblockButtons >
-                <apex:commandButton value="Submit" action="{!upload}"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <apex:commandButton value="Back to Job lists" action="{!jobList}"/>
+                <apex:commandButton value="Submit" action="{!upload}" styleClass="btn"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:commandButton value="Back to Job lists" action="{!jobList}" styleClass="btn"/>
             </apex:pageblockButtons>
 
 

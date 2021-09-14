@@ -1,0 +1,3 @@
+<apex:page html-style="background-color: white; max-width: 100%; height: auto;" showHeader="false" >
+    <apex:image id="anImage" value="{!URLFOR($Resource.Menu)}" style="max-width: 100%; height: auto; margin-left: auto; margin-right: auto; width: 98%;"/>
+</apex:page>

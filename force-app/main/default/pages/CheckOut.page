@@ -1,6 +1,6 @@
 <apex:page standardController="Pizza__c"
            recordSetVar="myPizza"
-           extensions="CheckoutExtension">
+           extensions="CheckoutExtension" html-style="background-color: var(--bgColor);" showHeader="false">
     <style>
         :root {--bgColor: white;}
         body {
@@ -75,10 +75,12 @@
         <apex:pageBlock >
             <div style="text-align: center;">
                 <apex:commandButton action="{!Buy}"
-                                	value="Buy"/>
+                                	value="Buy"
+                                    styleClass="btn"/>
             
             	<apex:commandButton action="{!PopulateCart}"
-                                	value="View Cart"/>
+                                	value="View Cart"
+                                    styleClass="btn"/>
             </div>
             
             

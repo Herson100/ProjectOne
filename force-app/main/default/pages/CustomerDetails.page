@@ -1,0 +1,46 @@
+<apex:page controller="CustomerController" html-style="background-color: white;" showHeader="false" standardStylesheets="true" action="{!noOrdRedirect}">
+    <apex:slds />
+    <style>
+    .btn 
+    {font-family: Merriweather !important; 
+     padding: 6px 12px !important; 
+     margin: 1px !important;
+     color: black !important; 
+     background-repeat: no repeat !important; 
+     overflow: hidden !important; 
+     background-image: none !important; 
+     background-color: transparent !important;
+     border: solid black 1px !important;
+     }
+    
+    .btn:hover{background-color: lightgray !important;}
+       
+    </style>
+    <section>
+    <div style = "background-color: white;">
+        <br></br>
+        <h1 style = "font-family: Merriweather; font-size: 24px; color: black;">
+            Previous Orders
+        </h1>
+        </div>
+    </section>
+    <section class = "slds-grid slds-grid_vertical" style = "background-color: white;">
+        <div class = "slds-col slds-size_1-of-1" style = "background-color: white;">
+    <apex:form styleClass="formBG">
+        <apex:pageBlock id="oldord" >
+          <apex:pageBlockTable value="{!currentPizzas}" var="pizza" styleClass="pbTable">
+              <apex:column value="{!pizza.Toppings__c}" width="65%"/>
+                <apex:column value="{!pizza.Size__c}" width="25%"/>
+                <apex:column value="{!pizza.Price__c}" width="10%"/>
+            </apex:pageBlockTable> 
+            </apex:pageBlock>
+        <span style = "background-color: white;"><apex:commandButton action="{!Previous}" value="Previous" reRender="oldord" styleClass="btn"/></span>
+       <span style = "background-color: white;"><apex:commandButton action="{!Next}" value="Next" rerender="oldord" styleClass="btn"/></span>
+        <span style = "float: right; background-color: white;"><apex:commandButton action="{!ReOrder1}" value="Order Again" styleClass="btn"/></span>
+    </apex:form>
+         
+            <br></br>
+        </div>
+     </section>
+<br></br>
+</apex:page>

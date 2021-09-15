@@ -7,7 +7,10 @@
     <types>
         <members>*</members>
         <name>ApexComponent</name>
-    
+        <types>
+            <members>System Administrator</members>
+            <name>Profile</name>
+        </types>
 
     <version>52.0</version>
 </Package>

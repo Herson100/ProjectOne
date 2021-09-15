@@ -25,10 +25,10 @@
         <name>LightningComponentBundle</name>
     </types-->
 
-    <!--types>
-        <members>Customer Community Plus Login User</members>
+    <types>
+        <members>Admin</members>
         <name>Profile</name>
-    </types-->
+    </types>
     <types>
         <members>*</members>
         <name>StaticResource</name>
@@ -48,10 +48,10 @@
         <members>*</members>
         <name>Role</name>
     </types>
-    <!--types>
-        <members>*</members>
+    <types>
+        <members>mspaint_pizzeria_icon</members>
         <name>ContentAsset</name>
-    </types-->
+    </types>
     <types>
         <members>*</members>
         <name>Queue</name>
@@ -67,10 +67,10 @@
 
 
 
-    <!--types>
+    <types>
         <members>RevaturePizzeria</members>
         <name>CustomApplication</name>
-    </types-->
+    </types>
     <types>
         <members>*</members>
         <name>CustomTab</name>
@@ -79,10 +79,10 @@
         <members>*</members>
         <name>BrandingSet</name>
     </types>
-    <!--types>
+    <types>
         <members>*</members>
         <name>Flexipage</name>
-    </types-->
+    </types>
     <!--types>
         <members></members>
         <name>Settings</name>

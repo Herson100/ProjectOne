@@ -7,9 +7,13 @@
     <types>
         <members>*</members>
         <name>ApexComponent</name>
-        <types>
+        <!--types>
             <members>System Administrator</members>
             <name>Profile</name>
+        </types-->
+        <types>
+            <members>*</members>
+            <name>ExperienceBundle</name>
         </types>
 
     <version>52.0</version>

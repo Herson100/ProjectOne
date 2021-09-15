@@ -45,8 +45,10 @@ public class SubmitApplication {
     }
         // redirect to FirstPage (Job Lists)
     public PageReference jobList(){
-        PageReference pageRef = new PageReference('/apex/FirstPage');
-        return pageRef;    
+       // PageReference pageRef = new PageReference('/apex/FirstPage');
+       // Changing to redirect to home page. 
+        PageReference pageRef = new PageReference('https://joesfloatingpalace-developer-edition.na163.force.com/CustomerTest');
+       return pageRef;    
     }
    
 }

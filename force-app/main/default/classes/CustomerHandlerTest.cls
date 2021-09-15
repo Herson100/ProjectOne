@@ -96,8 +96,9 @@ public class CustomerHandlerTest
             
         Contact newCon = new Contact(Lastname = 'Frederick', AccountID = newAcc.id);
         Insert newCon;
-        
-        Profile comProfile = [SELECT id FROM Profile WHERE name = 'Customer Community Login Plus User' LIMIT 1];
+
+        id comProfile = [SELECT id FROM Profile WHERE name = 'Customer Community Plus Login User' LIMIT 1].id;
+            
         List<Contact> contactList = new List<Contact>();
         for(Integer n = 0; n < 151; n++)
         {
@@ -117,7 +118,7 @@ public class CustomerHandlerTest
             u.CommunityNickname = string.valueof(n) + 'test12';
             u.LocaleSidKey = 'en_US';
             u.TimeZoneSidKey = 'GMT';
-            u.ProfileID = comProfile.id;
+            u.ProfileID = comProfile;
             u.LanguageLocaleKey = 'en_US';
             u.EmailEncodingKey = 'UTF-8';
             u.IsActive = true;

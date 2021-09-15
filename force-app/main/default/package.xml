@@ -60,10 +60,10 @@
         <members>*</members>
         <name>Flow</name>
     </types>
-    <!--types>
-        <members>*</members>
+    <types>
+        <members>CustomerPerms</members>
         <name>PermissionSet</name>
-    </types-->
+    </types>
 
 
 
@@ -95,6 +95,10 @@
         <name>Package</name>
     </types-->
 
+    <types>
+        <members>*</members>
+        <name>ExperienceBundle</name>
+    </types>
 
 
 

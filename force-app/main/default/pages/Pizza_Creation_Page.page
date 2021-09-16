@@ -1,6 +1,9 @@
 <apex:page standardController="Pizza__c" extensions="CreatePizzaPageExtension" html-style="background-color: var(--bgColor);" showHeader="false">
-  <h1>Pizza Creation Page</h1>
-    
+    <div>
+         <apex:image id="anotherImage" value="{!URLFOR($Resource.JoesFloatingPizzaPalace)}" style="max-width: 100%; height: auto; margin-left: auto; margin-right: auto;"/>
+    </div>
+    <h1>Pizza Creation Page</h1>
+
     <style>
         h1 {font-family: Merriweather; font-size:25px; width:58%; float:right; }
         
@@ -18,23 +21,35 @@
         }
         
         .btn:hover{background-color: lightgray !important;}
+        
+        .center{margin: auto !important;
+  width: 50% !important;
+  padding: 10px !important;}
     </style>
-  
+    <body>
+
+
+  <section style = "margin: auto !important;
+  width: 50% !important;
+  padding: 10px; !important">
+
   <apex:form id="newPizzaForm">
+      <br></br>
       <apex:pageBlock >
-      
-      <apex:pageBlockButtons >
-      		<apex:commandLink value="Checkout" action="{!toCheckout}"/>
+      <apex:pageBlockButtons styleClass="center">
+      		<apex:commandButton value="Checkout" action="{!toCheckout}" styleClass="btn"/>
             <apex:commandButton value="Add Pizza" action="{!SavePizza}" rerender="newPizzaForm" styleClass="btn"/>
-      </apex:pageBlockButtons>
+      </apex:pageBlockButtons> 
       
-      <apex:pageBlockSection >
-          <apex:outputPanel id="panel1">
+      <apex:pageBlockSection html-style="margin: auto !important; width: 50% !important; padding: 10px !important;">
+          <div style = "float: right;">
+              
+         <apex:outputPanel id="panel1">
               <apex:inputField value="{!Pizza__c.recordTypeID}"/>
               <apex:actionSupport event="onchange"
                                   reRender="panel2">
               </apex:actionSupport>
-          </apex:outputPanel>
+          </apex:outputPanel> </div>
           <apex:outputPanel id="panel2">
           	  <apex:inputField value="{!Pizza__c.Size__c}" required="true"/>
               <apex:inputField value="{!Pizza__c.Toppings__c}"/>
@@ -53,5 +68,5 @@
       
       </apex:pageBlock>
       
-  </apex:form>
+  </apex:form></section>    </body>
 </apex:page>

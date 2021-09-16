@@ -1,14 +1,45 @@
 <apex:page Controller="OrderCompleteController" html-style="background-color: white;" showHeader="false">
     <style>
         body {}
-        p {font-weight:bold; font-size:30px; text-align:center;font-family: Merriweather !important; }
+        p {font-weight:bold; font-size:30px; text-align: center; font-family: Merriweather; }
+        
+            .btn 
+    {font-family: Merriweather !important; 
+     padding: 6px 12px !important; 
+     margin: 1px !important;
+     color: black !important; 
+     background-repeat: no repeat !important; 
+     overflow: hidden !important; 
+     background-image: none !important; 
+     background-color: transparent !important;
+     border: solid black 1px !important;
+     }
+    
+    .btn:hover{background-color: lightgray !important;}
     </style>
     <body>
-        <p>
+        <br></br>
+     <apex:image id="anotherImage" value="{!URLFOR($Resource.JoesFloatingPizzaPalace)}" style="max-width: 100%; height: auto; margin-left: auto; margin-right: auto;"/>
+    <br></br>
+<div style = "margin: auto;
+  width: 50%;
+  padding: 10px;">
+<p>
             Order Complete!
         </p>
         <p>
             {!readyTime}
-        </p>
+        </p></div>
+<!--<div style = "margin: auto; width: 50%; padding 10px;">
+    <form action= "https://joesfloatingpalace-developer-edition.na163.force.com/CustomerTest" style = "margin: auto; width: 50%; padding 10px;">
+    <input type="submit" value="Return" class = "btn" style = "margin: 0; position: absolute; top: 50%; left: 50%; -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);"/>
+</form>
+
+    
+        
+        
+    
+</div>-->
     </body>
 </apex:page>

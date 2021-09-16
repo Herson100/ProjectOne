@@ -36,9 +36,8 @@
             </apex:pageBlock>
         <span style = "background-color: white;"><apex:commandButton action="{!Previous}" value="Previous" reRender="oldord" styleClass="btn"/></span>
        <span style = "background-color: white;"><apex:commandButton action="{!Next}" value="Next" rerender="oldord" styleClass="btn"/></span>
-        <span style = "float: right; background-color: white;"><apex:commandButton action="{!ReOrder1}" value="Order Again" styleClass="btn"/></span>
+        <span style = "float: right; background-color: white;"><apex:commandButton action="{!ReOrder1}" value="Order Again" styleClass="btn"/></span><br></br><br></br>
     </apex:form>
-         
             <br></br>
         </div>
      </section>

@@ -1,5 +1,7 @@
 A project by Team Alchemy for Revature's Salesforce training
 
+# Project Name
+
 ## Project Description
 
 ## Technologies Used

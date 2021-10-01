@@ -1,8 +1,8 @@
-A project by Team Alchemy for Revature's Salesforce training
-
-# Project Name Here
+# Joe's Pizzaria
 
 ## Project Description
+
+A project by Team Alchemy for Revature's Salesforce training
 
 ## Technologies Used
 

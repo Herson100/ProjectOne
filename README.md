@@ -6,7 +6,20 @@ A project by Team Alchemy for Revature's Salesforce training
 
 ## Technologies Used
 
+* Saleforce CRM
+* Apex
+* Github
+* Visualforce
+* SOQL
+* Rest API
+
 ## Features
+
+* Store Locator Page
+* Cart and Checkout Page
+* Create Pizza Page
+* Customer Account Page
+* Postings and Applications Page
 
 ## Getting Started
 
@@ -22,6 +35,6 @@ A project by Team Alchemy for Revature's Salesforce training
 
 * Vi Nguyen
 
-*Andrew Wensley
+* Andrew Wensley
 
 ## License

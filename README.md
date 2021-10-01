@@ -14,4 +14,14 @@ A project by Team Alchemy for Revature's Salesforce training
 
 ## Contributors
 
+* Joesph Linthicum
+
+* Joshua Jones
+
+* Sushil Singh
+
+* Vi Nguyen
+
+*Andrew Wensley
+
 ## License

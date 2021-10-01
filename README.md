@@ -32,5 +32,3 @@ A project by Team Alchemy for Revature's Salesforce training
 * Sushil Singh
 * Vi Nguyen
 * Andrew Wensley
-
-## License

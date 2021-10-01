@@ -6,12 +6,12 @@ A project by Team Alchemy for Revature's Salesforce training
 
 ## Technologies Used
 
-* Saleforce CRM
+* Salesforce CRM
 * Apex
-* Github
 * Visualforce
 * SOQL
 * Rest API
+* Github
 
 ## Features
 

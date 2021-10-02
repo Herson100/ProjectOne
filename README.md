@@ -2,7 +2,7 @@
 
 ## Project Description
 
-A project by Team Alchemy for Revature's Salesforce training
+A project by Team Alchemy for Revature's Salesforce training. The org models a CRM and web page for a Pizzaria, where customers can order pizzas, recieve delivery estimates, reorder previous purchases, and apply for positions with the company.
 
 ## Technologies Used
 

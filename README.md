@@ -29,11 +29,13 @@ A project by Team Alchemy for Revature's Salesforce training
 > 
 > Copy the full file path for the manifest file (force-app/main/default/package.xml)
 > 
-> Enter the terminal and type `sfdx force:source:deploy -x ` with the manifest file path pasted after
+> Enter the terminal and type `sfdx force:source:deploy -x `  with the manifest file path pasted after
 > 
 > Once the deployment is finished, enter the org and create the experience site
 
 ## Usage
+
+> Log in or create an account to navigate to the home page. From there you can click the order tab to be brought to the Store Locator page, where you can enter an address to calculate an estimated delivery time from each store location, with the results ordered by time. You can select a location to go to the Cart and Checkout page, and from there navigate to the Create a Pizza page by clicking the appropriate button. On the Create a Pizza page you can select a size for your pizza, and any combination of toppings you'd like. Once you're satisfied with your selection you can head back to the Checkout page to either cancel your in progress order or place it for delivery. The Account tab in the navigation bar brings you to the Account page, where you can view and edit information about the active account, as well as reorder a previous purchase with the click of a button. The Carrers tab will display a list of available positions with the company, and a link to a page where you an apply for a career you'd like.
 
 ## Contributors
 
